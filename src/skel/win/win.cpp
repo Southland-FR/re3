@@ -132,9 +132,8 @@ static IDirect3D9 *gRe3ExternalD3D9 = nil;
 static char gRe3PrevCwd[MAX_PATH] = "";
 static bool gRe3Inited = false;
 static bool gRe3Running = false;
-static int32 gRe3BackBufferWidth = 0;
-static int32 gRe3BackBufferHeight = 0;
-static float gRe3ViewportScale = 1.0f;
+int gRe3BackBufferWidth = 0;
+int gRe3BackBufferHeight = 0;
 static FILE *gRe3Log = nil;
 static const char *gRe3BuildId = "re3_in_sa build " __DATE__ " " __TIME__;
 #endif
@@ -2716,9 +2715,9 @@ WinMain(HINSTANCE instance,
 #define RE3_DLL_EXPORT extern "C"
 #endif
 
-static void Re3Log(const char *fmt, ...)
+void Re3Log(const char *fmt, ...)
 {
-	static bool gRe3LogEnabled = false;
+	static bool gRe3LogEnabled = true;
 	if(!gRe3LogEnabled)
 		return;
 	if(gRe3Log == nil){
@@ -2802,24 +2801,13 @@ Re3_UpdateBackBufferSize(void)
 		if (SUCCEEDED(bb->GetDesc(&desc))) {
 			gRe3BackBufferWidth = (int32)desc.Width;
 			gRe3BackBufferHeight = (int32)desc.Height;
-			const float scale = (gRe3ViewportScale < 0.5f) ? 0.5f :
-				(gRe3ViewportScale > 1.0f ? 1.0f : gRe3ViewportScale);
-			const uint32 scaledW = (uint32)(desc.Width * scale);
-			const uint32 scaledH = (uint32)(desc.Height * scale);
-			RsGlobal.maximumWidth = scaledW;
-			RsGlobal.maximumHeight = scaledH;
-			RsGlobal.width = scaledW;
-			RsGlobal.height = scaledH;
+			RsGlobal.maximumWidth = desc.Width;
+			RsGlobal.maximumHeight = desc.Height;
+			RsGlobal.width = desc.Width;
+			RsGlobal.height = desc.Height;
 		}
 		bb->Release();
 	}
-}
-
-RE3_DLL_EXPORT void
-Re3_SetViewportScale(float scale)
-{
-	gRe3ViewportScale = scale;
-	Re3_UpdateBackBufferSize();
 }
 
 RE3_DLL_EXPORT RwBool

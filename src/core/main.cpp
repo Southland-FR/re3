@@ -76,6 +76,13 @@
 #include "GitSHA1.h"
 #endif
 
+#ifdef RE3_IN_SA
+extern int gRe3BackBufferWidth;
+extern int gRe3BackBufferHeight;
+void Re3Log(const char *fmt, ...);
+static uint32 gRe3LogTick = 0;
+#endif
+
 GlobalScene Scene;
 
 uint8 work_buff[55000];
@@ -201,31 +208,45 @@ DoRWStuffStartOfFrame(int16 TopRed, int16 TopGreen, int16 TopBlue, int16 BottomR
 	CRGBA TopColor(TopRed, TopGreen, TopBlue, Alpha);
 	CRGBA BottomColor(BottomRed, BottomGreen, BottomBlue, Alpha);
 
+#ifdef RE3_IN_SA
+	RwRect rect;
+	RwRect *prect = nil;
+	if (gRe3BackBufferWidth > 0 && gRe3BackBufferHeight > 0) {
+		rect.x = 0;
+		rect.y = 0;
+		rect.w = gRe3BackBufferWidth;
+		rect.h = gRe3BackBufferHeight;
+		prect = &rect;
+	}
+#endif
 #ifndef ASPECT_RATIO_SCALE
 #ifdef RE3_IN_SA
-	RwRect r;
-	r.x = 0;
-	r.y = 0;
-	r.w = RsGlobal.maximumWidth;
-	r.h = RsGlobal.maximumHeight;
-	CameraSize(Scene.camera, &r, SCREEN_VIEWWINDOW, (CMenuManager::m_PrefsUseWideScreen ? 16.f / 9.f : 4.f / 3.f));
+	CameraSize(Scene.camera, prect, SCREEN_VIEWWINDOW, (CMenuManager::m_PrefsUseWideScreen ? 16.f / 9.f : 4.f / 3.f));
 #else
 	CameraSize(Scene.camera, nil, SCREEN_VIEWWINDOW, (CMenuManager::m_PrefsUseWideScreen ? 16.f / 9.f : 4.f / 3.f));
 #endif
 #else
 #ifdef RE3_IN_SA
-	RwRect r;
-	r.x = 0;
-	r.y = 0;
-	r.w = RsGlobal.maximumWidth;
-	r.h = RsGlobal.maximumHeight;
-	CameraSize(Scene.camera, &r, SCREEN_VIEWWINDOW, SCREEN_ASPECT_RATIO);
+	CameraSize(Scene.camera, prect, SCREEN_VIEWWINDOW, SCREEN_ASPECT_RATIO);
 #else
 	CameraSize(Scene.camera, nil, SCREEN_VIEWWINDOW, SCREEN_ASPECT_RATIO);
 #endif
 #endif
 	CVisibilityPlugins::SetRenderWareCamera(Scene.camera);
 	RwCameraClear(Scene.camera, &TopColor.rwRGBA, CLEARMODE);
+
+#ifdef RE3_IN_SA
+	if ((gRe3LogTick++ % 120) == 0) {
+		RwRaster *raster = RwCameraGetRaster(Scene.camera);
+		int rw = raster ? RwRasterGetWidth(raster) : -1;
+		int rh = raster ? RwRasterGetHeight(raster) : -1;
+		Re3Log("DoRWStuffStartOfFrame: bb=%dx%d RsMax=%dx%d Rs=%dx%d cam=%dx%d",
+			gRe3BackBufferWidth, gRe3BackBufferHeight,
+			RsGlobal.maximumWidth, RsGlobal.maximumHeight,
+			RsGlobal.width, RsGlobal.height,
+			rw, rh);
+	}
+#endif
 
 	if(!RsCameraBeginUpdate(Scene.camera))
 		return false;
@@ -1718,13 +1739,44 @@ Idle(void *arg)
 		Render2dStuff();
 		tbEndTimer("Render2dStuff");
 	}else{
+#ifdef RE3_IN_SA
+		RwRect rect;
+		RwRect *prect = nil;
+		if (gRe3BackBufferWidth > 0 && gRe3BackBufferHeight > 0) {
+			rect.x = 0;
+			rect.y = 0;
+			rect.w = gRe3BackBufferWidth;
+			rect.h = gRe3BackBufferHeight;
+			prect = &rect;
+		}
+#endif
 #ifdef ASPECT_RATIO_SCALE
+#ifdef RE3_IN_SA
+		CameraSize(Scene.camera, prect, SCREEN_VIEWWINDOW, SCREEN_ASPECT_RATIO);
+#else
 		CameraSize(Scene.camera, nil, SCREEN_VIEWWINDOW, SCREEN_ASPECT_RATIO);
+#endif
+#else
+#ifdef RE3_IN_SA
+		CameraSize(Scene.camera, prect, SCREEN_VIEWWINDOW, DEFAULT_ASPECT_RATIO);
 #else
 		CameraSize(Scene.camera, nil, SCREEN_VIEWWINDOW, DEFAULT_ASPECT_RATIO);
 #endif
+#endif
 		CVisibilityPlugins::SetRenderWareCamera(Scene.camera);
 		RwCameraClear(Scene.camera, &gColourTop, CLEARMODE);
+#ifdef RE3_IN_SA
+		if ((gRe3LogTick++ % 120) == 0) {
+			RwRaster *raster = RwCameraGetRaster(Scene.camera);
+			int rw = raster ? RwRasterGetWidth(raster) : -1;
+			int rh = raster ? RwRasterGetHeight(raster) : -1;
+			Re3Log("Idle(menu): bb=%dx%d RsMax=%dx%d Rs=%dx%d cam=%dx%d",
+				gRe3BackBufferWidth, gRe3BackBufferHeight,
+				RsGlobal.maximumWidth, RsGlobal.maximumHeight,
+				RsGlobal.width, RsGlobal.height,
+				rw, rh);
+		}
+#endif
 		if(!RsCameraBeginUpdate(Scene.camera))
 			goto popret;
 	}
