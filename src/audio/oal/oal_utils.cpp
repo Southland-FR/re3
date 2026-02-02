@@ -49,6 +49,18 @@ LPALGETFILTERFV alGetFilterfv;
 
 using namespace re3_openal;
 
+static inline bool
+efxFilterAvailable(void)
+{
+	return alFilteri != nil && alFilterf != nil;
+}
+
+static inline bool
+efxEffectAvailable(void)
+{
+	return alEffecti != nil && alEffectf != nil && alEffectfv != nil;
+}
+
 void EFXInit()
 {
 	/* Define a macro to help load the function pointers. */
@@ -93,6 +105,8 @@ void EFXInit()
 
 void SetEffectsLevel(ALuint uiFilter, float level)
 {
+	if(!efxFilterAvailable())
+		return;
 	alFilteri(uiFilter, AL_FILTER_TYPE, AL_FILTER_LOWPASS);
 	alFilterf(uiFilter, AL_LOWPASS_GAIN, 1.0f);
 	alFilterf(uiFilter, AL_LOWPASS_GAINHF, level);
@@ -117,6 +131,8 @@ static inline float clampF(float val, float minval, float maxval)
 
 void EAX3_Set(ALuint effect, const EAXLISTENERPROPERTIES *props)
 {
+	if(!efxEffectAvailable())
+		return;
 	alEffecti (effect, AL_EFFECT_TYPE,                     AL_EFFECT_EAXREVERB);
 	alEffectf (effect, AL_EAXREVERB_DENSITY,               clampF(powf(props->flEnvironmentSize, 3.0f) / 16.0f, 0.0f, 1.0f));
 	alEffectf (effect, AL_EAXREVERB_DIFFUSION,             props->flEnvironmentDiffusion);
@@ -145,6 +161,8 @@ void EAX3_Set(ALuint effect, const EAXLISTENERPROPERTIES *props)
 
 void EFX_Set(ALuint effect, const EAXLISTENERPROPERTIES *props)
 {
+	if(!efxEffectAvailable())
+		return;
 	alEffecti(effect, AL_EFFECT_TYPE, AL_EFFECT_REVERB);
 	
 	alEffectf(effect, AL_REVERB_DENSITY,               clampF(powf(props->flEnvironmentSize, 3.0f) / 16.0f, 0.0f, 1.0f));
@@ -164,6 +182,8 @@ void EFX_Set(ALuint effect, const EAXLISTENERPROPERTIES *props)
 
 void EAX3_SetReverbMix(ALuint filter, float mix)
 {
+	if(!efxFilterAvailable())
+		return;
 	//long vol=(long)linear_to_dB(mix);
 	//DSPROPERTY_EAXBUFFER_ROOMHF,
 	//DSPROPERTY_EAXBUFFER_ROOM,

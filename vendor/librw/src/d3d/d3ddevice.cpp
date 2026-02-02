@@ -78,6 +78,7 @@ struct RwStateCache {
 	uint32 fogenable;
 	RGBA fogcolor;
 	uint32 cullmode;
+	uint32 shadeMode;
 	uint32 stencilenable;
 	uint32 stencilpass;
 	uint32 stencilfail;
@@ -150,6 +151,92 @@ static bool validStates[MAXNUMSTATES];
 static bool validTexStates[MAXNUMTEXSTATES];
 
 static D3DMATERIAL9 d3dmaterial;
+
+static void
+initExternalModes(void)
+{
+	if(d3d9Globals.present.BackBufferWidth == 0 || d3d9Globals.present.BackBufferHeight == 0)
+		return;
+
+	rwFree(d3d9Globals.modes);
+	d3d9Globals.modes = rwNewT(DisplayMode, 1, ID_DRIVER | MEMDUR_EVENT);
+	memset(d3d9Globals.modes, 0, sizeof(DisplayMode));
+	d3d9Globals.modes[0].mode.Width = d3d9Globals.present.BackBufferWidth;
+	d3d9Globals.modes[0].mode.Height = d3d9Globals.present.BackBufferHeight;
+	d3d9Globals.modes[0].mode.Format = d3d9Globals.present.BackBufferFormat;
+	d3d9Globals.modes[0].flags = 0;
+	d3d9Globals.numModes = 1;
+	d3d9Globals.currentMode = 0;
+	d3d9Globals.startMode = d3d9Globals.modes[0];
+	d3d9Globals.externalModesPending = 0;
+}
+
+void
+setExternalD3D9Device(HWND window, IDirect3DDevice9 *device, IDirect3D9 *d3d9)
+{
+	D3DSURFACE_DESC bbdesc;
+	IDirect3DSurface9 *bb = nil;
+	IDirect3DSurface9 *ds = nil;
+
+	d3d9Globals.externalDevice = 1;
+	d3d9Globals.window = window;
+	d3d9Globals.d3d9 = d3d9;
+	d3d::d3ddevice = device;
+
+	memset(&d3d9Globals.present, 0, sizeof(d3d9Globals.present));
+	d3d9Globals.present.Windowed = TRUE;
+	d3d9Globals.present.SwapEffect = D3DSWAPEFFECT_DISCARD;
+	d3d9Globals.present.hDeviceWindow = window;
+	d3d9Globals.present.BackBufferCount = 1;
+	d3d9Globals.present.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
+
+	if(d3d::d3ddevice){
+		d3d::d3ddevice->GetDeviceCaps(&d3d9Globals.caps);
+
+		if(SUCCEEDED(d3d::d3ddevice->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &bb))){
+			if(SUCCEEDED(bb->GetDesc(&bbdesc))){
+				d3d9Globals.present.BackBufferWidth = bbdesc.Width;
+				d3d9Globals.present.BackBufferHeight = bbdesc.Height;
+				d3d9Globals.present.BackBufferFormat = bbdesc.Format;
+				d3d9Globals.present.MultiSampleType = bbdesc.MultiSampleType;
+				d3d9Globals.present.MultiSampleQuality = bbdesc.MultiSampleQuality;
+			}
+			bb->Release();
+		}
+
+		if(SUCCEEDED(d3d::d3ddevice->GetDepthStencilSurface(&ds))){
+			D3DSURFACE_DESC dsdesc;
+			if(SUCCEEDED(ds->GetDesc(&dsdesc))){
+				d3d9Globals.present.EnableAutoDepthStencil = true;
+				d3d9Globals.present.AutoDepthStencilFormat = dsdesc.Format;
+			}else{
+				d3d9Globals.present.EnableAutoDepthStencil = false;
+			}
+			ds->Release();
+		}else{
+			d3d9Globals.present.EnableAutoDepthStencil = false;
+		}
+	}
+
+	d3d9Globals.msLevel = d3d9Globals.present.MultiSampleType == D3DMULTISAMPLE_NONE ? 1 : (uint32)d3d9Globals.present.MultiSampleType;
+	d3d9Globals.externalModesPending = 1;
+	if(rw::engine != nil)
+		initExternalModes();
+}
+
+void
+unsetExternalD3D9Device(void)
+{
+	d3d9Globals.externalDevice = 0;
+	d3d::d3ddevice = nil;
+	d3d9Globals.d3d9 = nil;
+}
+
+bool32
+isExternalD3D9Device(void)
+{
+	return d3d9Globals.externalDevice != 0;
+}
 
 
 static uint32 blendMap[] = {
@@ -681,6 +768,13 @@ setRwRenderState(int32 state, void *pvalue)
 			setRenderState(D3DRS_CULLMODE, cullmodeMap[value]);
 		}
 		break;
+	case SHADEMODE:
+		if(rwStateCache.shadeMode != value){
+			rwStateCache.shadeMode = value;
+			setRenderState(D3DRS_SHADEMODE,
+				value == SHADEMODEGOURAUD ? D3DSHADE_GOURAUD : D3DSHADE_FLAT);
+		}
+		break;
 
 	case STENCILENABLE:
 		if(rwStateCache.stencilenable != bval){
@@ -799,6 +893,9 @@ getRwRenderState(int32 state)
 		break;
 	case CULLMODE:
 		val = rwStateCache.cullmode;
+		break;
+	case SHADEMODE:
+		val = rwStateCache.shadeMode;
 		break;
 
 	case STENCILENABLE:
@@ -1321,9 +1418,11 @@ clearCamera(Camera *cam, RGBA *col, uint32 mode)
 		d3d9Globals.present.BackBufferWidth = r.right;
 		d3d9Globals.present.BackBufferHeight = r.bottom;
 
-		releaseVideoMemory();
-		d3d::d3ddevice->Reset(&d3d9Globals.present);
-		restoreVideoMemory();
+		if(!d3d9Globals.externalDevice){
+			releaseVideoMemory();
+			d3d::d3ddevice->Reset(&d3d9Globals.present);
+			restoreVideoMemory();
+		}
 	}
 
 	setRenderSurfaces(cam);
@@ -1337,9 +1436,11 @@ showRaster(Raster *raster, uint32 flag)
 	UINT interval = flag & Raster::FLIPWAITVSYNCH ? D3DPRESENT_INTERVAL_ONE : D3DPRESENT_INTERVAL_IMMEDIATE;
 	if(d3d9Globals.present.PresentationInterval != interval){
 		d3d9Globals.present.PresentationInterval = interval;
-		releaseVideoMemory();
-		d3d::d3ddevice->Reset(&d3d9Globals.present);
-		restoreVideoMemory();
+		if(!d3d9Globals.externalDevice){
+			releaseVideoMemory();
+			d3d::d3ddevice->Reset(&d3d9Globals.present);
+			restoreVideoMemory();
+		}
 	}
 
 	// not used but we want cameras to have rasters
@@ -1349,7 +1450,7 @@ showRaster(Raster *raster, uint32 flag)
 	if(res == D3DERR_DEVICELOST){
 		res = d3ddevice->TestCooperativeLevel();
 		// lost while being minimized, not reset once we're back
-		if(res == D3DERR_DEVICENOTRESET){
+		if(res == D3DERR_DEVICENOTRESET && !d3d9Globals.externalDevice){
 			releaseVideoMemory();
 			d3d::d3ddevice->Reset(&d3d9Globals.present);
 			restoreVideoMemory();
@@ -1501,30 +1602,114 @@ openD3D(EngineOpenParams *params)
 	HWND win = params->window;
 
 	d3d9Globals.window = win;
+	d3d9Globals.externalDevice = false;
+	d3d9Globals.d3d9FromDevice = false;
 	d3d9Globals.numAdapters = 0;
 	d3d9Globals.modes = nil;
 	d3d9Globals.numModes = 0;
 	d3d9Globals.currentMode = 0;
 
-	d3d9Globals.d3d9 = Direct3DCreate9(D3D_SDK_VERSION);
-	if(d3d9Globals.d3d9 == nil){
-		RWERROR((ERR_GENERAL, "Direct3DCreate9() failed"));
-		return 0;
+	if(params->externalDevice){
+		d3d9Globals.externalDevice = true;
+		d3d9Globals.d3d9 = params->d3d9;
+		d3d::d3ddevice = params->device;
+		if(d3d9Globals.d3d9 == nil && params->device){
+			if(SUCCEEDED(params->device->GetDirect3D(&d3d9Globals.d3d9))){
+				d3d9Globals.d3d9FromDevice = true;
+			}
+		}
+		if(d3d9Globals.d3d9 == nil){
+			RWERROR((ERR_GENERAL, "External device requires IDirect3D9"));
+			return 0;
+		}
+	}else{
+		d3d9Globals.d3d9 = Direct3DCreate9(D3D_SDK_VERSION);
+		if(d3d9Globals.d3d9 == nil){
+			RWERROR((ERR_GENERAL, "Direct3DCreate9() failed"));
+			return 0;
+		}
 	}
 
 	d3d9Globals.numAdapters = d3d9Globals.d3d9->GetAdapterCount();
 	d3d9Globals.adapter = 0;
 
+	if(d3d9Globals.externalDevice && params->device){
+		D3DDEVICE_CREATION_PARAMETERS cp;
+		if(SUCCEEDED(params->device->GetCreationParameters(&cp))){
+			d3d9Globals.adapter = cp.AdapterOrdinal;
+		}
+	}
+
 	for(d3d9Globals.adapter = 0; d3d9Globals.adapter < d3d9Globals.numAdapters; d3d9Globals.adapter++)
 		if(d3d9Globals.d3d9->GetDeviceCaps(d3d9Globals.adapter, D3DDEVTYPE_HAL, &d3d9Globals.caps) == D3D_OK)
 			goto found;
 	// no adapter
-	d3d9Globals.d3d9->Release();
+	if(!d3d9Globals.externalDevice || d3d9Globals.d3d9FromDevice){
+		d3d9Globals.d3d9->Release();
+	}
 	d3d9Globals.d3d9 = nil;
 	RWERROR((ERR_GENERAL, "Direct3DCreate9() failed"));
 	return 0;
 
 found:
+	if(d3d9Globals.externalDevice && params->present){
+		d3d9Globals.present = *params->present;
+	}else if(d3d9Globals.externalDevice && params->device){
+		D3DPRESENT_PARAMETERS pp = {};
+		IDirect3DSurface9 *bb = nil;
+		IDirect3DSurface9 *ds = nil;
+		if(SUCCEEDED(params->device->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &bb))){
+			D3DSURFACE_DESC desc;
+			if(SUCCEEDED(bb->GetDesc(&desc))){
+				pp.BackBufferWidth = desc.Width;
+				pp.BackBufferHeight = desc.Height;
+				pp.BackBufferFormat = desc.Format;
+				pp.MultiSampleType = desc.MultiSampleType;
+				pp.MultiSampleQuality = desc.MultiSampleQuality;
+			}
+			bb->Release();
+		}
+		if(SUCCEEDED(params->device->GetDepthStencilSurface(&ds))){
+			D3DSURFACE_DESC desc;
+			if(SUCCEEDED(ds->GetDesc(&desc))){
+				pp.AutoDepthStencilFormat = desc.Format;
+			}
+			ds->Release();
+		}
+		pp.BackBufferCount = 1;
+		pp.SwapEffect = D3DSWAPEFFECT_DISCARD;
+		pp.hDeviceWindow = d3d9Globals.window;
+		pp.Windowed = TRUE;
+		pp.EnableAutoDepthStencil = true;
+		if(pp.AutoDepthStencilFormat == D3DFMT_UNKNOWN)
+			pp.AutoDepthStencilFormat = D3DFMT_D24S8;
+		pp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
+		pp.FullScreen_RefreshRateInHz = D3DPRESENT_RATE_DEFAULT;
+		d3d9Globals.present = pp;
+	}
+	if(d3d9Globals.externalDevice && params->device &&
+	   (d3d9Globals.present.BackBufferWidth == 0 || d3d9Globals.present.BackBufferHeight == 0)){
+		D3DPRESENT_PARAMETERS pp = d3d9Globals.present;
+		IDirect3DSurface9 *bb = nil;
+		if(SUCCEEDED(params->device->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &bb))){
+			D3DSURFACE_DESC desc;
+			if(SUCCEEDED(bb->GetDesc(&desc))){
+				pp.BackBufferWidth = desc.Width;
+				pp.BackBufferHeight = desc.Height;
+				pp.BackBufferFormat = desc.Format;
+				pp.MultiSampleType = desc.MultiSampleType;
+				pp.MultiSampleQuality = desc.MultiSampleQuality;
+			}
+			bb->Release();
+		}
+		if(pp.BackBufferWidth == 0 || pp.BackBufferHeight == 0){
+			RECT r;
+			GetClientRect(d3d9Globals.window, &r);
+			pp.BackBufferWidth = r.right;
+			pp.BackBufferHeight = r.bottom;
+		}
+		d3d9Globals.present = pp;
+	}
 	makeVideoModeList();
 	return 1;
 }
@@ -1532,9 +1717,11 @@ found:
 static int
 closeD3D(void)
 {
-	ULONG ref = d3d9Globals.d3d9->Release();
-	if(ref != 0)
-		printf("IDirect3D9_Release did not destroy\n");
+	if(!d3d9Globals.externalDevice || d3d9Globals.d3d9FromDevice){
+		ULONG ref = d3d9Globals.d3d9->Release();
+		if(ref != 0)
+			printf("IDirect3D9_Release did not destroy\n");
+	}
 	d3d9Globals.d3d9 = nil;
 	rwFree(d3d9Globals.modes);
 	d3d9Globals.modes = nil;
@@ -1548,6 +1735,9 @@ startD3D(void)
 {
 	HRESULT hr;
 	int vp;
+	if(d3d9Globals.externalDevice){
+		return d3d::d3ddevice != nil;
+	}
 	if(d3d9Globals.caps.DevCaps & D3DDEVCAPS_HWTRANSFORMANDLIGHT)
 		vp = D3DCREATE_HARDWARE_VERTEXPROCESSING;
 	else
@@ -1673,6 +1863,8 @@ initD3D(void)
 
 	d3ddevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 	rwStateCache.cullmode = CULLNONE;
+	d3ddevice->SetRenderState(D3DRS_SHADEMODE, D3DSHADE_GOURAUD);
+	rwStateCache.shadeMode = SHADEMODEGOURAUD;
 
 	d3ddevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 	d3ddevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);

@@ -49,6 +49,10 @@ struct D3d9Globals
 	int numVertexBuffers;
 	int numIndexBuffers;
 	int numVertexDeclarations;
+
+	bool32 externalDevice;
+	bool32 d3d9FromDevice;
+	bool32 externalModesPending;
 };
 
 extern D3d9Globals d3d9Globals;

@@ -32,6 +32,12 @@ typedef rw::Rect RwRect;
 
 typedef rw::Sphere RwSphere;
 
+#ifdef RW_D3D9
+struct IDirect3D9;
+struct IDirect3DDevice9;
+struct _D3DPRESENT_PARAMETERS;
+#endif
+
 enum RwTextureCoordinateIndex
 {
 	rwNARWTEXTURECOORDINATEINDEX = 0,
@@ -432,6 +438,12 @@ RwBool RwRenderStateSet(RwRenderState state, void *value);
 struct RwEngineOpenParams
 {
 	void    *displayID;
+#ifdef RW_D3D9
+	IDirect3D9 *d3d9;
+	IDirect3DDevice9 *device;
+	_D3DPRESENT_PARAMETERS *present;
+	RwBool externalDevice;
+#endif
 };
 
 typedef rw::SubSystemInfo RwSubSystemInfo;

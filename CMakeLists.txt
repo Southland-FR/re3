@@ -20,6 +20,7 @@ set(${PROJECT}_AUDIO "OAL" CACHE STRING "Audio")
 
 option(${PROJECT}_WITH_OPUS "Build ${EXECUTABLE} with opus support" OFF)
 option(${PROJECT}_WITH_LIBSNDFILE "Build ${EXECUTABLE} with libsndfile (instead of internal decoder)" OFF)
+option(${PROJECT}_BUILD_DLL "Build ${EXECUTABLE} as a DLL (in-SA)" OFF)
 
 set_property(CACHE ${PROJECT}_AUDIO PROPERTY STRINGS ${${PROJECT}_AUDIOS})
 message(STATUS "${PROJECT}_AUDIO = ${${PROJECT}_AUDIO} (choices=${${PROJECT}_AUDIOS})")

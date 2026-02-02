@@ -17,9 +17,9 @@ enum RenderState
 	FOGENABLE,
 	FOGCOLOR,
 	CULLMODE,
+	SHADEMODE,
 	// TODO:
 	// fog type, density ?
-	// ? shademode
 
 	STENCILENABLE,
 	STENCILFAIL,
@@ -78,6 +78,13 @@ enum CullMode
 	CULLFRONT
 };
 
+enum ShadeMode
+{
+	SHADEMODENASHADEMODE = 0,
+	SHADEMODEFLAT,
+	SHADEMODEGOURAUD
+};
+
 enum BlendFunction
 {
 	BLENDZERO = 1,
@@ -134,4 +141,3 @@ void End(void);
 }
 
 }
-

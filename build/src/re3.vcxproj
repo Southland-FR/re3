@@ -1,0 +1,873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>ARM64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{84B7E1BD-78C7-310E-B8DB-2006D1802B1F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>Win32</Platform>
+    <ProjectName>re3</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Mac\Home\Documents\GitHub\re3\build\src\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">re3.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">re3</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Mac\Home\Documents\GitHub\re3\build\src\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">re3.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">re3</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Mac\Home\Documents\GitHub\re3\build\src\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">re3.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">re3</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Mac\Home\Documents\GitHub\re3\build\src\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">re3.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">re3</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Mac\Home\Documents\GitHub\re3;C:\Mac\Home\Documents\GitHub\re3\src\animation;C:\Mac\Home\Documents\GitHub\re3\src\audio;C:\Mac\Home\Documents\GitHub\re3\src\audio\eax;C:\Mac\Home\Documents\GitHub\re3\src\audio\oal;C:\Mac\Home\Documents\GitHub\re3\src\buildings;C:\Mac\Home\Documents\GitHub\re3\src\collision;C:\Mac\Home\Documents\GitHub\re3\src\control;C:\Mac\Home\Documents\GitHub\re3\src\core;C:\Mac\Home\Documents\GitHub\re3\src\entities;C:\Mac\Home\Documents\GitHub\re3\src\extras;C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders;C:\Mac\Home\Documents\GitHub\re3\src\fakerw;C:\Mac\Home\Documents\GitHub\re3\src\math;C:\Mac\Home\Documents\GitHub\re3\src\modelinfo;C:\Mac\Home\Documents\GitHub\re3\src\objects;C:\Mac\Home\Documents\GitHub\re3\src\peds;C:\Mac\Home\Documents\GitHub\re3\src\render;C:\Mac\Home\Documents\GitHub\re3\src\rw;C:\Mac\Home\Documents\GitHub\re3\src\save;C:\Mac\Home\Documents\GitHub\re3\src\skel;C:\Mac\Home\Documents\GitHub\re3\src\skel\glfw;C:\Mac\Home\Documents\GitHub\re3\src\skel\win;C:\Mac\Home\Documents\GitHub\re3\src\text;C:\Mac\Home\Documents\GitHub\re3\src\vehicles;C:\Mac\Home\Documents\GitHub\re3\src\weapons;C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src;C:\Mac\Home\Documents\GitHub\reVC\vendor\openal-soft\include;C:\Mac\Home\Documents\GitHub\re3\vendor\librw;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:sizedDealloc-</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;4244</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;DEBUG;LIBRW;RE3_NO_AUTOLINK;RE3_IN_SA;USE_D3D9;CMAKE_BUILD;AUDIO_OAL;RW_D3D9;CMAKE_INTDIR="Debug";re3_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;DEBUG;LIBRW;RE3_NO_AUTOLINK;RE3_IN_SA;USE_D3D9;CMAKE_BUILD;AUDIO_OAL;RW_D3D9;CMAKE_INTDIR=\"Debug\";re3_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Mac\Home\Documents\GitHub\re3;C:\Mac\Home\Documents\GitHub\re3\src\animation;C:\Mac\Home\Documents\GitHub\re3\src\audio;C:\Mac\Home\Documents\GitHub\re3\src\audio\eax;C:\Mac\Home\Documents\GitHub\re3\src\audio\oal;C:\Mac\Home\Documents\GitHub\re3\src\buildings;C:\Mac\Home\Documents\GitHub\re3\src\collision;C:\Mac\Home\Documents\GitHub\re3\src\control;C:\Mac\Home\Documents\GitHub\re3\src\core;C:\Mac\Home\Documents\GitHub\re3\src\entities;C:\Mac\Home\Documents\GitHub\re3\src\extras;C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders;C:\Mac\Home\Documents\GitHub\re3\src\fakerw;C:\Mac\Home\Documents\GitHub\re3\src\math;C:\Mac\Home\Documents\GitHub\re3\src\modelinfo;C:\Mac\Home\Documents\GitHub\re3\src\objects;C:\Mac\Home\Documents\GitHub\re3\src\peds;C:\Mac\Home\Documents\GitHub\re3\src\render;C:\Mac\Home\Documents\GitHub\re3\src\rw;C:\Mac\Home\Documents\GitHub\re3\src\save;C:\Mac\Home\Documents\GitHub\re3\src\skel;C:\Mac\Home\Documents\GitHub\re3\src\skel\glfw;C:\Mac\Home\Documents\GitHub\re3\src\skel\win;C:\Mac\Home\Documents\GitHub\re3\src\text;C:\Mac\Home\Documents\GitHub\re3\src\vehicles;C:\Mac\Home\Documents\GitHub\re3\src\weapons;C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src;C:\Mac\Home\Documents\GitHub\reVC\vendor\openal-soft\include;C:\Mac\Home\Documents\GitHub\re3\vendor\librw;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Mac\Home\Documents\GitHub\re3;C:\Mac\Home\Documents\GitHub\re3\src\animation;C:\Mac\Home\Documents\GitHub\re3\src\audio;C:\Mac\Home\Documents\GitHub\re3\src\audio\eax;C:\Mac\Home\Documents\GitHub\re3\src\audio\oal;C:\Mac\Home\Documents\GitHub\re3\src\buildings;C:\Mac\Home\Documents\GitHub\re3\src\collision;C:\Mac\Home\Documents\GitHub\re3\src\control;C:\Mac\Home\Documents\GitHub\re3\src\core;C:\Mac\Home\Documents\GitHub\re3\src\entities;C:\Mac\Home\Documents\GitHub\re3\src\extras;C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders;C:\Mac\Home\Documents\GitHub\re3\src\fakerw;C:\Mac\Home\Documents\GitHub\re3\src\math;C:\Mac\Home\Documents\GitHub\re3\src\modelinfo;C:\Mac\Home\Documents\GitHub\re3\src\objects;C:\Mac\Home\Documents\GitHub\re3\src\peds;C:\Mac\Home\Documents\GitHub\re3\src\render;C:\Mac\Home\Documents\GitHub\re3\src\rw;C:\Mac\Home\Documents\GitHub\re3\src\save;C:\Mac\Home\Documents\GitHub\re3\src\skel;C:\Mac\Home\Documents\GitHub\re3\src\skel\glfw;C:\Mac\Home\Documents\GitHub\re3\src\skel\win;C:\Mac\Home\Documents\GitHub\re3\src\text;C:\Mac\Home\Documents\GitHub\re3\src\vehicles;C:\Mac\Home\Documents\GitHub\re3\src\weapons;C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src;C:\Mac\Home\Documents\GitHub\reVC\vendor\openal-soft\include;C:\Mac\Home\Documents\GitHub\re3\vendor\librw;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\vendor\librw\src\Debug\librw.lib;C:\Program Files (x86)\OpenAL 1.1 SDK\libs\Win32\OpenAL32.lib;d3d9.lib;xinput.lib;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\lib\Win32\libmpg123-0.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Mac/Home/Documents/GitHub/re3/build/src/Debug/re3.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Mac/Home/Documents/GitHub/re3/build/src/Debug/re3.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem></SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Mac\Home\Documents\GitHub\re3;C:\Mac\Home\Documents\GitHub\re3\src\animation;C:\Mac\Home\Documents\GitHub\re3\src\audio;C:\Mac\Home\Documents\GitHub\re3\src\audio\eax;C:\Mac\Home\Documents\GitHub\re3\src\audio\oal;C:\Mac\Home\Documents\GitHub\re3\src\buildings;C:\Mac\Home\Documents\GitHub\re3\src\collision;C:\Mac\Home\Documents\GitHub\re3\src\control;C:\Mac\Home\Documents\GitHub\re3\src\core;C:\Mac\Home\Documents\GitHub\re3\src\entities;C:\Mac\Home\Documents\GitHub\re3\src\extras;C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders;C:\Mac\Home\Documents\GitHub\re3\src\fakerw;C:\Mac\Home\Documents\GitHub\re3\src\math;C:\Mac\Home\Documents\GitHub\re3\src\modelinfo;C:\Mac\Home\Documents\GitHub\re3\src\objects;C:\Mac\Home\Documents\GitHub\re3\src\peds;C:\Mac\Home\Documents\GitHub\re3\src\render;C:\Mac\Home\Documents\GitHub\re3\src\rw;C:\Mac\Home\Documents\GitHub\re3\src\save;C:\Mac\Home\Documents\GitHub\re3\src\skel;C:\Mac\Home\Documents\GitHub\re3\src\skel\glfw;C:\Mac\Home\Documents\GitHub\re3\src\skel\win;C:\Mac\Home\Documents\GitHub\re3\src\text;C:\Mac\Home\Documents\GitHub\re3\src\vehicles;C:\Mac\Home\Documents\GitHub\re3\src\weapons;C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src;C:\Mac\Home\Documents\GitHub\reVC\vendor\openal-soft\include;C:\Mac\Home\Documents\GitHub\re3\vendor\librw;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:sizedDealloc-</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DisableSpecificWarnings>4996;4244</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;LIBRW;RE3_NO_AUTOLINK;RE3_IN_SA;USE_D3D9;CMAKE_BUILD;AUDIO_OAL;RW_D3D9;CMAKE_INTDIR="Release";re3_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;LIBRW;RE3_NO_AUTOLINK;RE3_IN_SA;USE_D3D9;CMAKE_BUILD;AUDIO_OAL;RW_D3D9;CMAKE_INTDIR=\"Release\";re3_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Mac\Home\Documents\GitHub\re3;C:\Mac\Home\Documents\GitHub\re3\src\animation;C:\Mac\Home\Documents\GitHub\re3\src\audio;C:\Mac\Home\Documents\GitHub\re3\src\audio\eax;C:\Mac\Home\Documents\GitHub\re3\src\audio\oal;C:\Mac\Home\Documents\GitHub\re3\src\buildings;C:\Mac\Home\Documents\GitHub\re3\src\collision;C:\Mac\Home\Documents\GitHub\re3\src\control;C:\Mac\Home\Documents\GitHub\re3\src\core;C:\Mac\Home\Documents\GitHub\re3\src\entities;C:\Mac\Home\Documents\GitHub\re3\src\extras;C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders;C:\Mac\Home\Documents\GitHub\re3\src\fakerw;C:\Mac\Home\Documents\GitHub\re3\src\math;C:\Mac\Home\Documents\GitHub\re3\src\modelinfo;C:\Mac\Home\Documents\GitHub\re3\src\objects;C:\Mac\Home\Documents\GitHub\re3\src\peds;C:\Mac\Home\Documents\GitHub\re3\src\render;C:\Mac\Home\Documents\GitHub\re3\src\rw;C:\Mac\Home\Documents\GitHub\re3\src\save;C:\Mac\Home\Documents\GitHub\re3\src\skel;C:\Mac\Home\Documents\GitHub\re3\src\skel\glfw;C:\Mac\Home\Documents\GitHub\re3\src\skel\win;C:\Mac\Home\Documents\GitHub\re3\src\text;C:\Mac\Home\Documents\GitHub\re3\src\vehicles;C:\Mac\Home\Documents\GitHub\re3\src\weapons;C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src;C:\Mac\Home\Documents\GitHub\reVC\vendor\openal-soft\include;C:\Mac\Home\Documents\GitHub\re3\vendor\librw;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Mac\Home\Documents\GitHub\re3;C:\Mac\Home\Documents\GitHub\re3\src\animation;C:\Mac\Home\Documents\GitHub\re3\src\audio;C:\Mac\Home\Documents\GitHub\re3\src\audio\eax;C:\Mac\Home\Documents\GitHub\re3\src\audio\oal;C:\Mac\Home\Documents\GitHub\re3\src\buildings;C:\Mac\Home\Documents\GitHub\re3\src\collision;C:\Mac\Home\Documents\GitHub\re3\src\control;C:\Mac\Home\Documents\GitHub\re3\src\core;C:\Mac\Home\Documents\GitHub\re3\src\entities;C:\Mac\Home\Documents\GitHub\re3\src\extras;C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders;C:\Mac\Home\Documents\GitHub\re3\src\fakerw;C:\Mac\Home\Documents\GitHub\re3\src\math;C:\Mac\Home\Documents\GitHub\re3\src\modelinfo;C:\Mac\Home\Documents\GitHub\re3\src\objects;C:\Mac\Home\Documents\GitHub\re3\src\peds;C:\Mac\Home\Documents\GitHub\re3\src\render;C:\Mac\Home\Documents\GitHub\re3\src\rw;C:\Mac\Home\Documents\GitHub\re3\src\save;C:\Mac\Home\Documents\GitHub\re3\src\skel;C:\Mac\Home\Documents\GitHub\re3\src\skel\glfw;C:\Mac\Home\Documents\GitHub\re3\src\skel\win;C:\Mac\Home\Documents\GitHub\re3\src\text;C:\Mac\Home\Documents\GitHub\re3\src\vehicles;C:\Mac\Home\Documents\GitHub\re3\src\weapons;C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src;C:\Mac\Home\Documents\GitHub\reVC\vendor\openal-soft\include;C:\Mac\Home\Documents\GitHub\re3\vendor\librw;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\vendor\librw\src\Release\librw.lib;C:\Program Files (x86)\OpenAL 1.1 SDK\libs\Win32\OpenAL32.lib;d3d9.lib;xinput.lib;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\lib\Win32\libmpg123-0.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Mac/Home/Documents/GitHub/re3/build/src/Release/re3.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Mac/Home/Documents/GitHub/re3/build/src/Release/re3.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem></SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Mac\Home\Documents\GitHub\re3;C:\Mac\Home\Documents\GitHub\re3\src\animation;C:\Mac\Home\Documents\GitHub\re3\src\audio;C:\Mac\Home\Documents\GitHub\re3\src\audio\eax;C:\Mac\Home\Documents\GitHub\re3\src\audio\oal;C:\Mac\Home\Documents\GitHub\re3\src\buildings;C:\Mac\Home\Documents\GitHub\re3\src\collision;C:\Mac\Home\Documents\GitHub\re3\src\control;C:\Mac\Home\Documents\GitHub\re3\src\core;C:\Mac\Home\Documents\GitHub\re3\src\entities;C:\Mac\Home\Documents\GitHub\re3\src\extras;C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders;C:\Mac\Home\Documents\GitHub\re3\src\fakerw;C:\Mac\Home\Documents\GitHub\re3\src\math;C:\Mac\Home\Documents\GitHub\re3\src\modelinfo;C:\Mac\Home\Documents\GitHub\re3\src\objects;C:\Mac\Home\Documents\GitHub\re3\src\peds;C:\Mac\Home\Documents\GitHub\re3\src\render;C:\Mac\Home\Documents\GitHub\re3\src\rw;C:\Mac\Home\Documents\GitHub\re3\src\save;C:\Mac\Home\Documents\GitHub\re3\src\skel;C:\Mac\Home\Documents\GitHub\re3\src\skel\glfw;C:\Mac\Home\Documents\GitHub\re3\src\skel\win;C:\Mac\Home\Documents\GitHub\re3\src\text;C:\Mac\Home\Documents\GitHub\re3\src\vehicles;C:\Mac\Home\Documents\GitHub\re3\src\weapons;C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src;C:\Mac\Home\Documents\GitHub\reVC\vendor\openal-soft\include;C:\Mac\Home\Documents\GitHub\re3\vendor\librw;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:sizedDealloc-</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DisableSpecificWarnings>4996;4244</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;LIBRW;RE3_NO_AUTOLINK;RE3_IN_SA;USE_D3D9;CMAKE_BUILD;AUDIO_OAL;RW_D3D9;CMAKE_INTDIR="MinSizeRel";re3_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;LIBRW;RE3_NO_AUTOLINK;RE3_IN_SA;USE_D3D9;CMAKE_BUILD;AUDIO_OAL;RW_D3D9;CMAKE_INTDIR=\"MinSizeRel\";re3_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Mac\Home\Documents\GitHub\re3;C:\Mac\Home\Documents\GitHub\re3\src\animation;C:\Mac\Home\Documents\GitHub\re3\src\audio;C:\Mac\Home\Documents\GitHub\re3\src\audio\eax;C:\Mac\Home\Documents\GitHub\re3\src\audio\oal;C:\Mac\Home\Documents\GitHub\re3\src\buildings;C:\Mac\Home\Documents\GitHub\re3\src\collision;C:\Mac\Home\Documents\GitHub\re3\src\control;C:\Mac\Home\Documents\GitHub\re3\src\core;C:\Mac\Home\Documents\GitHub\re3\src\entities;C:\Mac\Home\Documents\GitHub\re3\src\extras;C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders;C:\Mac\Home\Documents\GitHub\re3\src\fakerw;C:\Mac\Home\Documents\GitHub\re3\src\math;C:\Mac\Home\Documents\GitHub\re3\src\modelinfo;C:\Mac\Home\Documents\GitHub\re3\src\objects;C:\Mac\Home\Documents\GitHub\re3\src\peds;C:\Mac\Home\Documents\GitHub\re3\src\render;C:\Mac\Home\Documents\GitHub\re3\src\rw;C:\Mac\Home\Documents\GitHub\re3\src\save;C:\Mac\Home\Documents\GitHub\re3\src\skel;C:\Mac\Home\Documents\GitHub\re3\src\skel\glfw;C:\Mac\Home\Documents\GitHub\re3\src\skel\win;C:\Mac\Home\Documents\GitHub\re3\src\text;C:\Mac\Home\Documents\GitHub\re3\src\vehicles;C:\Mac\Home\Documents\GitHub\re3\src\weapons;C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src;C:\Mac\Home\Documents\GitHub\reVC\vendor\openal-soft\include;C:\Mac\Home\Documents\GitHub\re3\vendor\librw;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Mac\Home\Documents\GitHub\re3;C:\Mac\Home\Documents\GitHub\re3\src\animation;C:\Mac\Home\Documents\GitHub\re3\src\audio;C:\Mac\Home\Documents\GitHub\re3\src\audio\eax;C:\Mac\Home\Documents\GitHub\re3\src\audio\oal;C:\Mac\Home\Documents\GitHub\re3\src\buildings;C:\Mac\Home\Documents\GitHub\re3\src\collision;C:\Mac\Home\Documents\GitHub\re3\src\control;C:\Mac\Home\Documents\GitHub\re3\src\core;C:\Mac\Home\Documents\GitHub\re3\src\entities;C:\Mac\Home\Documents\GitHub\re3\src\extras;C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders;C:\Mac\Home\Documents\GitHub\re3\src\fakerw;C:\Mac\Home\Documents\GitHub\re3\src\math;C:\Mac\Home\Documents\GitHub\re3\src\modelinfo;C:\Mac\Home\Documents\GitHub\re3\src\objects;C:\Mac\Home\Documents\GitHub\re3\src\peds;C:\Mac\Home\Documents\GitHub\re3\src\render;C:\Mac\Home\Documents\GitHub\re3\src\rw;C:\Mac\Home\Documents\GitHub\re3\src\save;C:\Mac\Home\Documents\GitHub\re3\src\skel;C:\Mac\Home\Documents\GitHub\re3\src\skel\glfw;C:\Mac\Home\Documents\GitHub\re3\src\skel\win;C:\Mac\Home\Documents\GitHub\re3\src\text;C:\Mac\Home\Documents\GitHub\re3\src\vehicles;C:\Mac\Home\Documents\GitHub\re3\src\weapons;C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src;C:\Mac\Home\Documents\GitHub\reVC\vendor\openal-soft\include;C:\Mac\Home\Documents\GitHub\re3\vendor\librw;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\vendor\librw\src\MinSizeRel\librw.lib;C:\Program Files (x86)\OpenAL 1.1 SDK\libs\Win32\OpenAL32.lib;d3d9.lib;xinput.lib;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\lib\Win32\libmpg123-0.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Mac/Home/Documents/GitHub/re3/build/src/MinSizeRel/re3.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Mac/Home/Documents/GitHub/re3/build/src/MinSizeRel/re3.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem></SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Mac\Home\Documents\GitHub\re3;C:\Mac\Home\Documents\GitHub\re3\src\animation;C:\Mac\Home\Documents\GitHub\re3\src\audio;C:\Mac\Home\Documents\GitHub\re3\src\audio\eax;C:\Mac\Home\Documents\GitHub\re3\src\audio\oal;C:\Mac\Home\Documents\GitHub\re3\src\buildings;C:\Mac\Home\Documents\GitHub\re3\src\collision;C:\Mac\Home\Documents\GitHub\re3\src\control;C:\Mac\Home\Documents\GitHub\re3\src\core;C:\Mac\Home\Documents\GitHub\re3\src\entities;C:\Mac\Home\Documents\GitHub\re3\src\extras;C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders;C:\Mac\Home\Documents\GitHub\re3\src\fakerw;C:\Mac\Home\Documents\GitHub\re3\src\math;C:\Mac\Home\Documents\GitHub\re3\src\modelinfo;C:\Mac\Home\Documents\GitHub\re3\src\objects;C:\Mac\Home\Documents\GitHub\re3\src\peds;C:\Mac\Home\Documents\GitHub\re3\src\render;C:\Mac\Home\Documents\GitHub\re3\src\rw;C:\Mac\Home\Documents\GitHub\re3\src\save;C:\Mac\Home\Documents\GitHub\re3\src\skel;C:\Mac\Home\Documents\GitHub\re3\src\skel\glfw;C:\Mac\Home\Documents\GitHub\re3\src\skel\win;C:\Mac\Home\Documents\GitHub\re3\src\text;C:\Mac\Home\Documents\GitHub\re3\src\vehicles;C:\Mac\Home\Documents\GitHub\re3\src\weapons;C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src;C:\Mac\Home\Documents\GitHub\reVC\vendor\openal-soft\include;C:\Mac\Home\Documents\GitHub\re3\vendor\librw;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Zc:sizedDealloc-</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;4244</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;LIBRW;RE3_NO_AUTOLINK;RE3_IN_SA;USE_D3D9;CMAKE_BUILD;AUDIO_OAL;RW_D3D9;CMAKE_INTDIR="RelWithDebInfo";re3_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;LIBRW;RE3_NO_AUTOLINK;RE3_IN_SA;USE_D3D9;CMAKE_BUILD;AUDIO_OAL;RW_D3D9;CMAKE_INTDIR=\"RelWithDebInfo\";re3_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Mac\Home\Documents\GitHub\re3;C:\Mac\Home\Documents\GitHub\re3\src\animation;C:\Mac\Home\Documents\GitHub\re3\src\audio;C:\Mac\Home\Documents\GitHub\re3\src\audio\eax;C:\Mac\Home\Documents\GitHub\re3\src\audio\oal;C:\Mac\Home\Documents\GitHub\re3\src\buildings;C:\Mac\Home\Documents\GitHub\re3\src\collision;C:\Mac\Home\Documents\GitHub\re3\src\control;C:\Mac\Home\Documents\GitHub\re3\src\core;C:\Mac\Home\Documents\GitHub\re3\src\entities;C:\Mac\Home\Documents\GitHub\re3\src\extras;C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders;C:\Mac\Home\Documents\GitHub\re3\src\fakerw;C:\Mac\Home\Documents\GitHub\re3\src\math;C:\Mac\Home\Documents\GitHub\re3\src\modelinfo;C:\Mac\Home\Documents\GitHub\re3\src\objects;C:\Mac\Home\Documents\GitHub\re3\src\peds;C:\Mac\Home\Documents\GitHub\re3\src\render;C:\Mac\Home\Documents\GitHub\re3\src\rw;C:\Mac\Home\Documents\GitHub\re3\src\save;C:\Mac\Home\Documents\GitHub\re3\src\skel;C:\Mac\Home\Documents\GitHub\re3\src\skel\glfw;C:\Mac\Home\Documents\GitHub\re3\src\skel\win;C:\Mac\Home\Documents\GitHub\re3\src\text;C:\Mac\Home\Documents\GitHub\re3\src\vehicles;C:\Mac\Home\Documents\GitHub\re3\src\weapons;C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src;C:\Mac\Home\Documents\GitHub\reVC\vendor\openal-soft\include;C:\Mac\Home\Documents\GitHub\re3\vendor\librw;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Mac\Home\Documents\GitHub\re3;C:\Mac\Home\Documents\GitHub\re3\src\animation;C:\Mac\Home\Documents\GitHub\re3\src\audio;C:\Mac\Home\Documents\GitHub\re3\src\audio\eax;C:\Mac\Home\Documents\GitHub\re3\src\audio\oal;C:\Mac\Home\Documents\GitHub\re3\src\buildings;C:\Mac\Home\Documents\GitHub\re3\src\collision;C:\Mac\Home\Documents\GitHub\re3\src\control;C:\Mac\Home\Documents\GitHub\re3\src\core;C:\Mac\Home\Documents\GitHub\re3\src\entities;C:\Mac\Home\Documents\GitHub\re3\src\extras;C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders;C:\Mac\Home\Documents\GitHub\re3\src\fakerw;C:\Mac\Home\Documents\GitHub\re3\src\math;C:\Mac\Home\Documents\GitHub\re3\src\modelinfo;C:\Mac\Home\Documents\GitHub\re3\src\objects;C:\Mac\Home\Documents\GitHub\re3\src\peds;C:\Mac\Home\Documents\GitHub\re3\src\render;C:\Mac\Home\Documents\GitHub\re3\src\rw;C:\Mac\Home\Documents\GitHub\re3\src\save;C:\Mac\Home\Documents\GitHub\re3\src\skel;C:\Mac\Home\Documents\GitHub\re3\src\skel\glfw;C:\Mac\Home\Documents\GitHub\re3\src\skel\win;C:\Mac\Home\Documents\GitHub\re3\src\text;C:\Mac\Home\Documents\GitHub\re3\src\vehicles;C:\Mac\Home\Documents\GitHub\re3\src\weapons;C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src;C:\Mac\Home\Documents\GitHub\reVC\vendor\openal-soft\include;C:\Mac\Home\Documents\GitHub\re3\vendor\librw;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\vendor\librw\src\RelWithDebInfo\librw.lib;C:\Program Files (x86)\OpenAL 1.1 SDK\libs\Win32\OpenAL32.lib;d3d9.lib;xinput.lib;C:\Mac\Home\Documents\GitHub\reVC\vendor\mpg123\lib\Win32\libmpg123-0.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Mac/Home/Documents/GitHub/re3/build/src/RelWithDebInfo/re3.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Mac/Home/Documents/GitHub/re3/build/src/RelWithDebInfo/re3.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem></SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Mac\Home\Documents\GitHub\re3\src\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Mac/Home/Documents/GitHub/re3/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Mac/Home/Documents/GitHub/re3 -BC:/Mac/Home/Documents/GitHub/re3/build --check-stamp-file C:/Mac/Home/Documents/GitHub/re3/build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Mac\Home\Documents\GitHub\re3\cmake\Findmpg123.cmake;C:\Mac\Home\Documents\GitHub\re3\src\extras\GitSHA1.cpp.in;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindOpenAL.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CheckSourceCompiles.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Mac\Home\Documents\GitHub\re3\build\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Mac/Home/Documents/GitHub/re3/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Mac/Home/Documents/GitHub/re3 -BC:/Mac/Home/Documents/GitHub/re3/build --check-stamp-file C:/Mac/Home/Documents/GitHub/re3/build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Mac\Home\Documents\GitHub\re3\cmake\Findmpg123.cmake;C:\Mac\Home\Documents\GitHub\re3\src\extras\GitSHA1.cpp.in;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindOpenAL.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CheckSourceCompiles.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Mac\Home\Documents\GitHub\re3\build\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Mac/Home/Documents/GitHub/re3/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Mac/Home/Documents/GitHub/re3 -BC:/Mac/Home/Documents/GitHub/re3/build --check-stamp-file C:/Mac/Home/Documents/GitHub/re3/build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Mac\Home\Documents\GitHub\re3\cmake\Findmpg123.cmake;C:\Mac\Home\Documents\GitHub\re3\src\extras\GitSHA1.cpp.in;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindOpenAL.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CheckSourceCompiles.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Mac\Home\Documents\GitHub\re3\build\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Mac/Home/Documents/GitHub/re3/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Mac/Home/Documents/GitHub/re3 -BC:/Mac/Home/Documents/GitHub/re3/build --check-stamp-file C:/Mac/Home/Documents/GitHub/re3/build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Mac\Home\Documents\GitHub\re3\cmake\Findmpg123.cmake;C:\Mac\Home\Documents\GitHub\re3\src\extras\GitSHA1.cpp.in;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindOpenAL.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.2\Modules\Internal\CheckSourceCompiles.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Mac\Home\Documents\GitHub\re3\build\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendAssocGroup.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendAssocGroup.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendAssociation.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendAssociation.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendClumpData.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendClumpData.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendHierarchy.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendHierarchy.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendList.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendNode.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendNode.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendSequence.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendSequence.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimManager.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimManager.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimationId.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\Bones.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\Bones.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\CutsceneMgr.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\CutsceneMgr.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\FrameUpdate.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\RpAnimBlend.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\RpAnimBlend.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioCollision.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioCollision.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioLogic.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioManager.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioManager.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioSamples.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioScriptObject.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioScriptObject.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\DMAudio.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\DMAudio.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\MusicManager.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\MusicManager.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\PoliceRadio.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\PoliceRadio.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\audio_enums.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\eax\eax-util.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\eax\eax-util.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\eax\eax.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\aldlist.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\aldlist.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\channel.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\channel.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\oal_utils.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\oal_utils.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\stream.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\stream.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\sampman.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\sampman_miles.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\sampman_null.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\sampman_oal.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\soundlist.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\buildings\Building.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\buildings\Building.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\buildings\Solid.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\buildings\Treadable.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\buildings\Treadable.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColBox.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColBox.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColLine.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColLine.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColModel.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColModel.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColPoint.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColPoint.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColSphere.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColSphere.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColTriangle.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColTriangle.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\Collision.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\Collision.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\CompressedVector.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\TempColModels.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\TempColModels.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\VuCollision.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\VuCollision.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\AutoPilot.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\AutoPilot.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Bridge.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Bridge.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\CarAI.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\CarAI.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\CarCtrl.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\CarCtrl.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Curves.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Curves.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Darkel.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Darkel.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\GameLogic.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\GameLogic.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Garages.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Garages.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\NameGrid.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\NameGrid.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\OnscreenTimer.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\OnscreenTimer.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\PathFind.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\PathFind.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Phones.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Phones.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Pickups.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Pickups.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\PowerPoints.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\PowerPoints.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Record.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Record.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Remote.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Remote.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Replay.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Replay.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Restart.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Restart.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\RoadBlocks.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\RoadBlocks.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\SceneEdit.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\SceneEdit.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Script.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Script.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Script2.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Script3.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Script4.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Script5.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Script6.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\ScriptCommands.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\TrafficLights.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\TrafficLights.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Accident.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Accident.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\AnimViewer.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\AnimViewer.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Cam.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Camera.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Camera.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\CdStream.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\CdStream.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\CdStreamPosix.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Clock.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Clock.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\ControllerConfig.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\ControllerConfig.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Crime.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Debug.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Debug.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Directory.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Directory.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\EventList.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\EventList.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\FileLoader.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\FileLoader.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\FileMgr.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\FileMgr.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Fire.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Fire.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\FrontEndControls.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\FrontEndControls.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Frontend.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Frontend.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\FrontendTriggers.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Frontend_PS2.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Frontend_PS2.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Game.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Game.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\General.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\IniFile.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\IniFile.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Lists.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Lists.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\MenuScreens.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\MenuScreensCustom.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Pad.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Pad.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Placeable.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Placeable.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\PlayerInfo.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\PlayerInfo.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Pools.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Pools.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Profile.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Profile.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Radar.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Radar.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Range2D.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Range2D.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Range3D.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Range3D.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\References.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\References.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Stats.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Stats.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Streaming.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Streaming.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\SurfaceTable.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\SurfaceTable.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\TimeStep.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\TimeStep.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Timer.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Timer.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\User.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\User.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Wanted.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Wanted.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\World.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\World.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\ZoneCull.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\ZoneCull.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Zones.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Zones.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\common.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\config.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\main.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\main.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\obrstr.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\obrstr.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\re3.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\templates.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\timebars.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\timebars.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\entities\Dummy.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\entities\Dummy.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\entities\Entity.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\entities\Entity.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\entities\Physical.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\entities\Physical.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\GitSHA1.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\custompipes.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\custompipes.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\custompipes_d3d9.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\custompipes_gl.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\debugmenu.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\debugmenu.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\frontendoption.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\frontendoption.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\postfx.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\postfx.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\re3_inttypes.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\screendroplets.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\screendroplets.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders\lighting.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders\standardConstants.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\fake.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rpanisot.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rphanim.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rpmatfx.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rpskin.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rpworld.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rtbmp.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rtcharse.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rtpng.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rtquat.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rwcore.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rwplcore.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Matrix.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Matrix.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Quaternion.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Quaternion.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Rect.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Rect.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Vector.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Vector.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Vector2D.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\math\VuVector.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\math\math.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\math\maths.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\BaseModelInfo.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\BaseModelInfo.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\ClumpModelInfo.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\ClumpModelInfo.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\MloModelInfo.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\MloModelInfo.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\ModelIndices.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\ModelIndices.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\ModelInfo.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\ModelInfo.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\PedModelInfo.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\PedModelInfo.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\SimpleModelInfo.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\SimpleModelInfo.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\TimeModelInfo.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\TimeModelInfo.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\VehicleModelInfo.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\VehicleModelInfo.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\XtraCompsModelInfo.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\CutsceneHead.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\CutsceneHead.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\CutsceneObject.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\CutsceneObject.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\DummyObject.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\DummyObject.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\Object.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\Object.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\ObjectData.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\ObjectData.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\ParticleObject.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\ParticleObject.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\Projectile.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\Projectile.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\CivilianPed.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\CivilianPed.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\CopPed.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\CopPed.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\DummyPed.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\EmergencyPed.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\EmergencyPed.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\Gangs.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\Gangs.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\Ped.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\Ped.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedAI.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedChat.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedDebug.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedFight.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedIK.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedIK.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedPlacement.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedPlacement.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedRoutes.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedRoutes.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedType.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedType.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PlayerPed.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PlayerPed.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\Population.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\Population.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\2dEffect.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Antennas.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Antennas.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Clouds.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Clouds.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Console.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Console.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Coronas.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Coronas.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Credits.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Credits.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Draw.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Draw.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Fluff.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Fluff.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Font.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Font.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Glass.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Glass.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Hud.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Hud.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Instance.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Instance.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Lines.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Lines.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\MBlur.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\MBlur.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Particle.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Particle.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\ParticleMgr.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\ParticleMgr.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\ParticleType.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\PlayerSkin.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\PlayerSkin.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\PointLights.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\PointLights.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\RenderBuffer.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\RenderBuffer.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Renderer.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Renderer.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Rubbish.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Rubbish.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Shadows.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Shadows.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Skidmarks.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Skidmarks.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\SpecialFX.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\SpecialFX.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Sprite.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Sprite.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Sprite2d.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Sprite2d.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\TexList.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\TexList.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Timecycle.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Timecycle.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\WaterCannon.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\WaterCannon.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\WaterLevel.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\WaterLevel.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Weather.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Weather.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\ClumpRead.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\Lights.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\Lights.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\MemoryHeap.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\MemoryHeap.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\MemoryMgr.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\MemoryMgr.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\NodeName.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\NodeName.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\RwHelper.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\RwHelper.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\RwMatFX.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\RwPS2AlphaTest.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\TexRead.cpp" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\TexturePools.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\TexturePools.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\TxdStore.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\TxdStore.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\VisibilityPlugins.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\VisibilityPlugins.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\save\Date.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\save\Date.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\save\GenericGameStorage.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\save\GenericGameStorage.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\save\MemoryCard.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\save\MemoryCard.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\save\PCSave.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\save\PCSave.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\crossplatform.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\crossplatform.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\events.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\events.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\glfw\glfw.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\platform.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\skeleton.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\skeleton.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\win\resource.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\win\win.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\win\win.h" />
+    <ResourceCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\win\win.rc" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\text\Messages.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\text\Messages.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\text\Pager.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\text\Pager.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\text\Text.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\text\Text.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Automobile.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Automobile.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Bike.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Boat.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Boat.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\CarGen.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\CarGen.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Cranes.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Cranes.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\DamageManager.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\DamageManager.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Door.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Door.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Floater.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Floater.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\HandlingMgr.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\HandlingMgr.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Heli.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Heli.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Plane.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Plane.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Train.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Train.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Transmission.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Transmission.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Vehicle.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Vehicle.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\BulletInfo.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\BulletInfo.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\Explosion.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\Explosion.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\ProjectileInfo.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\ProjectileInfo.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\ShotInfo.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\ShotInfo.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\Weapon.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\Weapon.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\WeaponEffects.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\WeaponEffects.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\WeaponInfo.cpp" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\WeaponInfo.h" />
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\WeaponType.h" />
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\build\src\extras\GitSHA1.cpp" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Mac\Home\Documents\GitHub\re3\build\ZERO_CHECK.vcxproj">
+      <Project>{41556CCF-3ED2-3551-9317-64B61B15DD65}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Mac\Home\Documents\GitHub\re3\build\vendor\librw\src\librw.vcxproj">
+      <Project>{F71CFF0B-26C3-3B04-B4EF-7208004292A9}</Project>
+      <Name>librw</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

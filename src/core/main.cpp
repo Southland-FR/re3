@@ -202,9 +202,27 @@ DoRWStuffStartOfFrame(int16 TopRed, int16 TopGreen, int16 TopBlue, int16 BottomR
 	CRGBA BottomColor(BottomRed, BottomGreen, BottomBlue, Alpha);
 
 #ifndef ASPECT_RATIO_SCALE
+#ifdef RE3_IN_SA
+	RwRect r;
+	r.x = 0;
+	r.y = 0;
+	r.w = RsGlobal.maximumWidth;
+	r.h = RsGlobal.maximumHeight;
+	CameraSize(Scene.camera, &r, SCREEN_VIEWWINDOW, (CMenuManager::m_PrefsUseWideScreen ? 16.f / 9.f : 4.f / 3.f));
+#else
 	CameraSize(Scene.camera, nil, SCREEN_VIEWWINDOW, (CMenuManager::m_PrefsUseWideScreen ? 16.f / 9.f : 4.f / 3.f));
+#endif
+#else
+#ifdef RE3_IN_SA
+	RwRect r;
+	r.x = 0;
+	r.y = 0;
+	r.w = RsGlobal.maximumWidth;
+	r.h = RsGlobal.maximumHeight;
+	CameraSize(Scene.camera, &r, SCREEN_VIEWWINDOW, SCREEN_ASPECT_RATIO);
 #else
 	CameraSize(Scene.camera, nil, SCREEN_VIEWWINDOW, SCREEN_ASPECT_RATIO);
+#endif
 #endif
 	CVisibilityPlugins::SetRenderWareCamera(Scene.camera);
 	RwCameraClear(Scene.camera, &TopColor.rwRGBA, CLEARMODE);

@@ -20,9 +20,15 @@ header_directories(${PROJECT}_INCLUDES)
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/extras/GitSHA1.cpp.in" "${CMAKE_CURRENT_BINARY_DIR}/extras/GitSHA1.cpp" @ONLY)
 list(APPEND ${PROJECT}_SOURCES "${CMAKE_CURRENT_BINARY_DIR}/extras/GitSHA1.cpp")
 
-add_executable(${EXECUTABLE} WIN32
-    ${${PROJECT}_SOURCES}
-)
+if(${PROJECT}_BUILD_DLL)
+    add_library(${EXECUTABLE} SHARED
+        ${${PROJECT}_SOURCES}
+    )
+else()
+    add_executable(${EXECUTABLE} WIN32
+        ${${PROJECT}_SOURCES}
+    )
+endif()
 
 target_link_libraries(${EXECUTABLE} PRIVATE
     librw::librw
@@ -33,6 +39,8 @@ target_include_directories(${EXECUTABLE}
     PRIVATE
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
         $<BUILD_INTERFACE:${${PROJECT}_INCLUDES}>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/vendor/librw/src>
 )
 
 target_compile_definitions(${EXECUTABLE}
@@ -41,6 +49,9 @@ target_compile_definitions(${EXECUTABLE}
         LIBRW
         ${PROJECT}_NO_AUTOLINK
 )
+if(${PROJECT}_BUILD_DLL)
+    target_compile_definitions(${EXECUTABLE} PRIVATE RE3_IN_SA)
+endif()
 
 if(LIBRW_PLATFORM_D3D9)
     target_compile_definitions(${EXECUTABLE}

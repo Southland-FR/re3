@@ -1,0 +1,15 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Mac/Home/Documents/GitHub/re3/build/cmake_install.cmake",
+		"C:/Mac/Home/Documents/GitHub/re3/build/vendor/librw/cmake_install.cmake",
+		"C:/Mac/Home/Documents/GitHub/re3/build/vendor/librw/src/cmake_install.cmake",
+		"C:/Mac/Home/Documents/GitHub/re3/build/vendor/librw/skeleton/cmake_install.cmake",
+		"C:/Mac/Home/Documents/GitHub/re3/build/vendor/librw/skeleton/imgui/cmake_install.cmake",
+		"C:/Mac/Home/Documents/GitHub/re3/build/vendor/librw/tools/cmake_install.cmake",
+		"C:/Mac/Home/Documents/GitHub/re3/build/vendor/librw/tools/dumprwtree/cmake_install.cmake",
+		"C:/Mac/Home/Documents/GitHub/re3/build/vendor/librw/tools/imguitest/cmake_install.cmake",
+		"C:/Mac/Home/Documents/GitHub/re3/build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

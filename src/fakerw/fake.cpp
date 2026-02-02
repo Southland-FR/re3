@@ -458,7 +458,7 @@ RwBool RwRenderStateGet(RwRenderState state, void *value)
 	case rwRENDERSTATETEXTUREADDRESSV: *uival = GetRenderState(TEXTUREADDRESSV); return true;
 	case rwRENDERSTATETEXTUREPERSPECTIVE: *uival = 1; return true;
 	case rwRENDERSTATEZTESTENABLE: *uival = GetRenderState(ZTESTENABLE); return true;
-	case rwRENDERSTATESHADEMODE: *uival = rwSHADEMODEGOURAUD; return true;
+	case rwRENDERSTATESHADEMODE: *uival = GetRenderState(SHADEMODE); return true;
 	case rwRENDERSTATEZWRITEENABLE: *uival = GetRenderState(ZWRITEENABLE); return true;
 	case rwRENDERSTATETEXTUREFILTER: *uival = GetRenderState(TEXTUREFILTER); return true;
 	case rwRENDERSTATESRCBLEND: *uival = GetRenderState(SRCBLEND); return true;
@@ -505,7 +505,7 @@ RwBool RwRenderStateSet(RwRenderState state, void *value)
 	case rwRENDERSTATETEXTUREADDRESSV: SetRenderState(TEXTUREADDRESSV, uival); return true;
 	case rwRENDERSTATETEXTUREPERSPECTIVE: return true;
 	case rwRENDERSTATEZTESTENABLE: SetRenderState(ZTESTENABLE, uival); return true;
-	case rwRENDERSTATESHADEMODE: return true;
+	case rwRENDERSTATESHADEMODE: SetRenderState(SHADEMODE, uival); return true;
 	case rwRENDERSTATEZWRITEENABLE: SetRenderState(ZWRITEENABLE, uival); return true;
 	case rwRENDERSTATETEXTUREFILTER: SetRenderState(TEXTUREFILTER, uival); return true;
 	case rwRENDERSTATESRCBLEND: SetRenderState(SRCBLEND, uival); return true;
@@ -567,6 +567,10 @@ RwBool RwEngineOpen(RwEngineOpenParams *initParams) {
 	static EngineOpenParams openParams;
 #ifdef RW_D3D9
 	openParams.window = (HWND)initParams->displayID;
+	openParams.d3d9 = initParams->d3d9;
+	openParams.device = initParams->device;
+	openParams.present = (D3DPRESENT_PARAMETERS*)initParams->present;
+	openParams.externalDevice = initParams->externalDevice;
 #else
 	openParams = *(EngineOpenParams*)initParams->displayID;
 #endif

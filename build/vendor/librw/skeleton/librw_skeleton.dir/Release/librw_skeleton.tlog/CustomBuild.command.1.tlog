@@ -1,0 +1,10 @@
+^C:\MAC\HOME\DOCUMENTS\GITHUB\RE3\VENDOR\LIBRW\SKELETON\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Mac/Home/Documents/GitHub/re3 -BC:/Mac/Home/Documents/GitHub/re3/build --check-stamp-file C:/Mac/Home/Documents/GitHub/re3/build/vendor/librw/skeleton/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\skeleton\imgui\imgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\skeleton\imgui\imgui_demo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\skeleton\imgui\imgui_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\skeleton\imgui\imgui_impl_rw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\skeleton\imgui\ImGuizmo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\skeleton\imgui\imconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\skeleton\imgui\imgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\skeleton\imgui\imgui_impl_rw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\skeleton\imgui\imgui_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\skeleton\imgui\ImGuizmo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\skeleton\imgui\stb_rect_pack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\skeleton\imgui\stb_textedit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\skeleton\imgui\stb_truetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\skeleton\imgui\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{55939740-B076-3D24-9204-F5B497DC658C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9F858EDC-1900-38AB-9ADA-CB1D2F48C576}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

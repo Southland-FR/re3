@@ -366,6 +366,11 @@ CPostFX::NeedFrontBuffer(int32 type)
 void
 CPostFX::GetBackBuffer(RwCamera *cam)
 {
+	if(pBackBuffer == nil){
+		Open(cam);
+		if(pBackBuffer == nil)
+			return;
+	}
 	RwRasterPushContext(pBackBuffer);
 	RwRasterRenderFast(RwCameraGetRaster(cam), 0, 0);
 	RwRasterPopContext();
@@ -411,8 +416,8 @@ CPostFX::Render(RwCamera *cam, uint32 red, uint32 green, uint32 blue, uint32 blu
 	PUSH_RENDERGROUP("CPostFX::Render");
 	if(pFrontBuffer == nil)
 		Open(cam);
-	assert(pFrontBuffer);
-	assert(pBackBuffer);
+	if(pFrontBuffer == nil || pBackBuffer == nil)
+		return;
 
 	if(NeedBackBuffer())
 		GetBackBuffer(cam);

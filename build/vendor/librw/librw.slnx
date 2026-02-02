@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Solution>
+	<Configurations>
+		<BuildType Name="Debug"/>
+		<BuildType Name="Release"/>
+		<BuildType Name="MinSizeRel"/>
+		<BuildType Name="RelWithDebInfo"/>
+		<Platform Name="Win32"/>
+	</Configurations>
+	<Project Path="ALL_BUILD.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="34a7c401-d6d4-372a-bbd1-7fd1ad976d93" DefaultStartup="true">
+		<BuildDependency Project="../../ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="tools/dumprwtree/dumprwtree.vcxproj"/>
+		<BuildDependency Project="tools/imguitest/imguitest.vcxproj"/>
+		<BuildDependency Project="src/librw.vcxproj"/>
+		<BuildDependency Project="skeleton/librw_skeleton.vcxproj"/>
+		<BuildDependency Project="skeleton/imgui/librw_skeleton_imgui.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="../../ZERO_CHECK.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="41556ccf-3ed2-3551-9317-64b61b15dd65"/>
+	<Project Path="tools/dumprwtree/dumprwtree.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="bc5f039f-56a0-39e0-ae46-de5bd13d797d">
+		<BuildDependency Project="../../ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tools/imguitest/imguitest.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="3f8a3ce8-1d7e-3acb-95e9-c1de1df74d07">
+		<BuildDependency Project="../../ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/librw.vcxproj"/>
+		<BuildDependency Project="skeleton/librw_skeleton.vcxproj"/>
+		<BuildDependency Project="skeleton/imgui/librw_skeleton_imgui.vcxproj"/>
+	</Project>
+	<Project Path="src/librw.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="f71cff0b-26c3-3b04-b4ef-7208004292a9">
+		<BuildDependency Project="../../ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="skeleton/librw_skeleton.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="1fe833c3-d710-3e3a-aeb0-7f13f9a2c62d">
+		<BuildDependency Project="../../ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/librw.vcxproj"/>
+	</Project>
+	<Project Path="skeleton/imgui/librw_skeleton_imgui.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="a113ab86-e5b4-3bf3-a875-26373b2f9664">
+		<BuildDependency Project="../../ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="src/librw.vcxproj"/>
+		<BuildDependency Project="skeleton/librw_skeleton.vcxproj"/>
+	</Project>
+</Solution>

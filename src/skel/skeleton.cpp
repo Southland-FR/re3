@@ -14,6 +14,7 @@
 #include "MemoryHeap.h"
 
 static RwBool               DefaultVideoMode = TRUE;
+static RsD3D9ExternalDeviceParams gExternalD3D9Params = { nil, nil, nil, FALSE };
 
 RsGlobalType                RsGlobal;
 
@@ -25,6 +26,19 @@ double
 RsTimer(void)
 {
 	return psTimer();
+}
+
+void
+RsSetExternalD3D9Device(const RsD3D9ExternalDeviceParams *params)
+{
+	if(params)
+		gExternalD3D9Params = *params;
+	else{
+		gExternalD3D9Params.d3d9 = nil;
+		gExternalD3D9Params.device = nil;
+		gExternalD3D9Params.present = nil;
+		gExternalD3D9Params.externalDevice = FALSE;
+	}
 }
 
 
@@ -343,6 +357,12 @@ RsRwInitialize(void *displayID)
 	}
 	
 	openParams.displayID = displayID;
+#ifdef RW_D3D9
+	openParams.d3d9 = (IDirect3D9*)gExternalD3D9Params.d3d9;
+	openParams.device = (IDirect3DDevice9*)gExternalD3D9Params.device;
+	openParams.present = (_D3DPRESENT_PARAMETERS*)gExternalD3D9Params.present;
+	openParams.externalDevice = gExternalD3D9Params.externalDevice;
+#endif
 
 	if (!RwEngineOpen(&openParams))
 	{

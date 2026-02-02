@@ -247,6 +247,15 @@ RsRegisterImageLoader(void);
 extern RwBool
 RsRwInitialize(void *param);
 
+struct RsD3D9ExternalDeviceParams {
+	void *d3d9;
+	void *device;
+	void *present;
+	RwBool externalDevice;
+};
+
+void RsSetExternalD3D9Device(const RsD3D9ExternalDeviceParams *params);
+
 extern RwBool
 RsSelectDevice(void);
 

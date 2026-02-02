@@ -12,6 +12,12 @@ namespace rw {
 struct EngineOpenParams
 {
 	HWND window;
+#ifdef _D3D9_H_
+	IDirect3D9 *d3d9;
+	IDirect3DDevice9 *device;
+	D3DPRESENT_PARAMETERS *present;
+	bool externalDevice;
+#endif
 };
 #else
 struct EngineOpenParams
@@ -35,6 +41,9 @@ extern Device renderdevice;
 #ifdef _D3D9_H_
 extern IDirect3DDevice9 *d3ddevice;
 void setD3dMaterial(D3DMATERIAL9 *mat9);
+void setExternalD3D9Device(HWND window, IDirect3DDevice9 *device, IDirect3D9 *d3d9);
+void unsetExternalD3D9Device(void);
+bool32 isExternalD3D9Device(void);
 #endif
 
 #define COLOR_ARGB(a, r, g, b) ((rw::uint32)((((a)&0xff)<<24)|(((r)&0xff)<<16)|(((g)&0xff)<<8)|((b)&0xff)))

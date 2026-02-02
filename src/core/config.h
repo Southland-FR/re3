@@ -288,6 +288,10 @@ enum Config {
 #undef SCREEN_DROPLETS		// we need the backbuffer for this effect
 #endif
 
+#ifdef RE3_IN_SA
+#undef SCREEN_DROPLETS
+#endif
+
 // Particle
 //#define PC_PARTICLE
 //#define PS2_ALTERNATIVE_CARSPLASH // unused on PS2

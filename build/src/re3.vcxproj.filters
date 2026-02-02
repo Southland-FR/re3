@@ -1,0 +1,1448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendAssocGroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendAssociation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendClumpData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendHierarchy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendSequence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\Bones.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\CutsceneMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\FrameUpdate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\RpAnimBlend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioCollision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioLogic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioScriptObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\DMAudio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\MusicManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\PoliceRadio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\eax\eax-util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\aldlist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\channel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\oal_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\stream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\sampman_miles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\sampman_null.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\sampman_oal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\buildings\Building.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\buildings\Treadable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColLine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColPoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColSphere.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColTriangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\Collision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\TempColModels.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\VuCollision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\AutoPilot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Bridge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\CarAI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\CarCtrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Curves.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Darkel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\GameLogic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Garages.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\NameGrid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\OnscreenTimer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\PathFind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Phones.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Pickups.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\PowerPoints.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Record.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Remote.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Replay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Restart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\RoadBlocks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\SceneEdit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Script.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Script2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Script3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Script4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Script5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Script6.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\control\TrafficLights.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Accident.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\AnimViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Cam.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\CdStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\CdStreamPosix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Clock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\ControllerConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Directory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\EventList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\FileLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\FileMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Fire.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\FrontEndControls.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Frontend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Frontend_PS2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\IniFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Lists.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\MenuScreens.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\MenuScreensCustom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Pad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Placeable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\PlayerInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Pools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Profile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Radar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Range2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Range3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\References.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Stats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Streaming.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\SurfaceTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\TimeStep.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\User.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Wanted.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\ZoneCull.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Zones.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\obrstr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\re3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\core\timebars.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\entities\Dummy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\entities\Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\entities\Physical.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\custompipes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\custompipes_d3d9.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\custompipes_gl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\debugmenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\frontendoption.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\postfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\screendroplets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\fake.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Matrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Quaternion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Rect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Vector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\math\math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\BaseModelInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\ClumpModelInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\MloModelInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\ModelIndices.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\ModelInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\PedModelInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\SimpleModelInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\TimeModelInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\VehicleModelInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\CutsceneHead.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\CutsceneObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\DummyObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\ObjectData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\ParticleObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\Projectile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\CivilianPed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\CopPed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\EmergencyPed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\Gangs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\Ped.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedAI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedChat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedDebug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedFight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedIK.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedPlacement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedRoutes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PlayerPed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\Population.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Antennas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Clouds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Console.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Coronas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Credits.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Fluff.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Font.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Glass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Hud.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Instance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Lines.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\MBlur.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Particle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\ParticleMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\PlayerSkin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\PointLights.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\RenderBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Rubbish.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Shadows.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Skidmarks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\SpecialFX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Sprite2d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\TexList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Timecycle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\WaterCannon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\WaterLevel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Weather.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\ClumpRead.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\Lights.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\MemoryHeap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\MemoryMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\NodeName.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\RwHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\RwMatFX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\RwPS2AlphaTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\TexRead.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\TexturePools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\TxdStore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\VisibilityPlugins.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\save\Date.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\save\GenericGameStorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\save\MemoryCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\save\PCSave.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\crossplatform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\events.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\glfw\glfw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\skeleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\win\win.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\text\Messages.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\text\Pager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\text\Text.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Automobile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Boat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\CarGen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Cranes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\DamageManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Door.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Floater.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\HandlingMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Heli.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Plane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Train.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Transmission.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Vehicle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\BulletInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\Explosion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\ProjectileInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\ShotInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\Weapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\WeaponEffects.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\WeaponInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\build\src\extras\GitSHA1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendAssocGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendAssociation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendClumpData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendHierarchy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimBlendSequence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\AnimationId.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\Bones.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\CutsceneMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\animation\RpAnimBlend.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioCollision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioSamples.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\AudioScriptObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\DMAudio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\MusicManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\PoliceRadio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\audio_enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\eax\eax-util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\eax\eax.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\aldlist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\channel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\oal_utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\oal\stream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\sampman.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\audio\soundlist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\buildings\Building.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\buildings\Solid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\buildings\Treadable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColLine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColSphere.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\ColTriangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\Collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\CompressedVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\TempColModels.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\collision\VuCollision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\AutoPilot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Bridge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\CarAI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\CarCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Curves.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Darkel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\GameLogic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Garages.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\NameGrid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\OnscreenTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\PathFind.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Phones.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Pickups.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\PowerPoints.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Record.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Remote.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Replay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Restart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\RoadBlocks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\SceneEdit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\Script.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\ScriptCommands.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\control\TrafficLights.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Accident.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\AnimViewer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\CdStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Clock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\ControllerConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Crime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Debug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Directory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\EventList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\FileLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\FileMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Fire.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\FrontEndControls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Frontend.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\FrontendTriggers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Frontend_PS2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\General.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\IniFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Lists.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Pad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Placeable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\PlayerInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Pools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Profile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Radar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Range2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Range3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\References.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Stats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Streaming.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\SurfaceTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\TimeStep.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\User.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Wanted.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\World.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\ZoneCull.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\Zones.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\obrstr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\templates.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\core\timebars.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\entities\Dummy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\entities\Entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\entities\Physical.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\GitSHA1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\custompipes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\debugmenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\frontendoption.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\postfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\re3_inttypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\screendroplets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders\lighting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\extras\shaders\standardConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rpanisot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rphanim.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rpmatfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rpskin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rpworld.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rtbmp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rtcharse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rtpng.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rtquat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rwcore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\fakerw\rwplcore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Quaternion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Rect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\math\Vector2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\math\VuVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\math\maths.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\BaseModelInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\ClumpModelInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\MloModelInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\ModelIndices.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\ModelInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\PedModelInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\SimpleModelInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\TimeModelInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\VehicleModelInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\modelinfo\XtraCompsModelInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\CutsceneHead.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\CutsceneObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\DummyObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\ObjectData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\ParticleObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\objects\Projectile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\CivilianPed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\CopPed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\DummyPed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\EmergencyPed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\Gangs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\Ped.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedIK.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedPlacement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedRoutes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PedType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\PlayerPed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\peds\Population.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\2dEffect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Antennas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Clouds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Console.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Coronas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Credits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Draw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Fluff.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Glass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Hud.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Instance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Lines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\MBlur.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Particle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\ParticleMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\ParticleType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\PlayerSkin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\PointLights.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\RenderBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Rubbish.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Shadows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Skidmarks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\SpecialFX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Sprite2d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\TexList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Timecycle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\WaterCannon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\WaterLevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\render\Weather.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\Lights.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\MemoryHeap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\MemoryMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\NodeName.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\RwHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\TexturePools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\TxdStore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\rw\VisibilityPlugins.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\save\Date.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\save\GenericGameStorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\save\MemoryCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\save\PCSave.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\crossplatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\events.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\skeleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\win\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\win\win.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\text\Messages.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\text\Pager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\text\Text.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Automobile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Bike.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Boat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\CarGen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Cranes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\DamageManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Door.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Floater.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\HandlingMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Heli.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Plane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Train.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Transmission.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\vehicles\Vehicle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\BulletInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\Explosion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\ProjectileInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\ShotInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\Weapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\WeaponEffects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\WeaponInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\src\weapons\WeaponType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Mac\Home\Documents\GitHub\re3\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Mac\Home\Documents\GitHub\re3\src\skel\win\win.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{55939740-B076-3D24-9204-F5B497DC658C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9F858EDC-1900-38AB-9ADA-CB1D2F48C576}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

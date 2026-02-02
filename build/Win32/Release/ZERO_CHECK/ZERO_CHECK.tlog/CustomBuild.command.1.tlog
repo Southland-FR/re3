@@ -1,0 +1,10 @@
+^C:\MAC\HOME\DOCUMENTS\GITHUB\RE3\BUILD\CMAKEFILES\41C39DA4F7BB0CF6B63438F1C27DF152\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Mac/Home/Documents/GitHub/re3 -BC:/Mac/Home/Documents/GitHub/re3/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Mac/Home/Documents/GitHub/re3/build/re3.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -45,12 +45,12 @@
 #include <tchar.h>
 #endif /* (defined(_MSC_VER)) */
 #include <stdio.h>
+#include <stdarg.h>
 #include "rwcore.h"
 #include "resource.h"
 #include "skeleton.h"
 #include "platform.h"
 #include "crossplatform.h"
-
 #define MAX_SUBSYSTEMS		(16)
 
 
@@ -125,6 +125,19 @@ CJoySticks AllValidWinJoys;
 char gSelectedJoystickName[128] = "";
 #endif
 
+#ifdef RE3_IN_SA
+static HWND gRe3ExternalWindow = nil;
+static IDirect3DDevice9 *gRe3ExternalDevice = nil;
+static IDirect3D9 *gRe3ExternalD3D9 = nil;
+static char gRe3PrevCwd[MAX_PATH] = "";
+static bool gRe3Inited = false;
+static bool gRe3Running = false;
+static int32 gRe3BackBufferWidth = 0;
+static int32 gRe3BackBufferHeight = 0;
+static FILE *gRe3Log = nil;
+static const char *gRe3BuildId = "re3_in_sa build " __DATE__ " " __TIME__;
+#endif
+
 // What is that for anyway?
 #ifndef IMPROVED_VIDEOMODE
 static RwBool defaultFullscreenRes = TRUE;
@@ -174,6 +187,12 @@ void _psCreateFolder(LPCSTR path)
  */
 const char *_psGetUserFilesFolder()
 {
+#ifdef RE3_IN_SA
+	static CHAR szUserFiles[256];
+	strcpy(szUserFiles, "GTA3 User Files");
+	_psCreateFolder(szUserFiles);
+	return szUserFiles;
+#else
 #ifdef USE_MY_DOCUMENTS
 	HKEY hKey = NULL;
 
@@ -210,6 +229,7 @@ const char *_psGetUserFilesFolder()
 	strcpy(szUserFiles, "userfiles");
 	_psCreateFolder(szUserFiles);
 	return szUserFiles;
+#endif
 #endif
 }
 
@@ -672,6 +692,7 @@ psInitialize(void)
 #ifndef _WIN64
 	_psPrintCpuInfo();
 #endif
+#ifndef RE3_IN_SA
 	OSVERSIONINFO verInfo;
 	verInfo.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
 	
@@ -772,6 +793,7 @@ psInitialize(void)
 
 		return FALSE;
 	}
+#endif
 	
 	TheText.Unload();
 
@@ -1422,6 +1444,23 @@ psSelectDevice()
 	RwVideoMode			vm;
 	RwInt32				subSysNum;
 	RwInt32				AutoRenderer = 0;
+
+#ifdef RE3_IN_SA
+	GnumSubSystems = RwEngineGetNumSubSystems();
+	if (GnumSubSystems <= 0)
+		return FALSE;
+
+	GcurSel = RwEngineGetCurrentSubSystem();
+	if (!RwEngineSetSubSystem(GcurSel))
+		return FALSE;
+
+	GcurSelVM = 0;
+	RwEngineGetVideoModeInfo(&vm, GcurSelVM);
+	if (!RwEngineSetVideoMode(GcurSelVM))
+		return FALSE;
+
+	return TRUE;
+#endif
 	
 
 	RwBool modeFound = FALSE;
@@ -2634,6 +2673,516 @@ WinMain(HINSTANCE instance,
 /*
  *****************************************************************************
  */
+
+#ifdef RE3_IN_SA
+
+#ifdef _WIN32
+#define RE3_DLL_EXPORT extern "C" __declspec(dllexport)
+#else
+#define RE3_DLL_EXPORT extern "C"
+#endif
+
+static void Re3Log(const char *fmt, ...)
+{
+	if(gRe3Log == nil){
+		char exePath[MAX_PATH];
+		GetModuleFileNameA(nil, exePath, MAX_PATH);
+		char *slash = strrchr(exePath, '\\');
+		if(slash) *(slash + 1) = '\0';
+		char logPath[MAX_PATH];
+		strcpy(logPath, exePath);
+		strcat(logPath, "re3_in_sa.log");
+		gRe3Log = fopen(logPath, "a");
+	}
+	if(gRe3Log == nil)
+		return;
+
+	SYSTEMTIME st;
+	GetLocalTime(&st);
+	fprintf(gRe3Log, "[%04u-%02u-%02u %02u:%02u:%02u.%03u] ",
+		st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond, st.wMilliseconds);
+	va_list args;
+	va_start(args, fmt);
+	vfprintf(gRe3Log, fmt, args);
+	va_end(args);
+	fprintf(gRe3Log, "\n");
+	fflush(gRe3Log);
+}
+
+static void Re3LogException(const char *tag, EXCEPTION_POINTERS *info)
+{
+	if(!info){
+		Re3Log("%s: exception (no info)", tag);
+		return;
+	}
+	Re3Log("%s: exception code=0x%08X address=%p",
+		tag,
+		(unsigned)info->ExceptionRecord->ExceptionCode,
+		info->ExceptionRecord->ExceptionAddress);
+}
+
+static int Re3SehFilter(const char *tag, EXCEPTION_POINTERS *info)
+{
+	Re3LogException(tag, info);
+	return EXCEPTION_EXECUTE_HANDLER;
+}
+
+static void
+Re3HandleKeyMessage(UINT msg, WPARAM wParam, LPARAM lParam)
+{
+	RsKeyCodes ks;
+
+	switch(msg){
+	case WM_KEYDOWN:
+	case WM_SYSKEYDOWN:
+		if(_InputTranslateKey(&ks, lParam, wParam))
+			RsKeyboardEventHandler(rsKEYDOWN, &ks);
+		if(wParam == VK_SHIFT)
+			_InputTranslateShiftKeyUpDown(&ks);
+		break;
+	case WM_KEYUP:
+	case WM_SYSKEYUP:
+		if(_InputTranslateKey(&ks, lParam, wParam))
+			RsKeyboardEventHandler(rsKEYUP, &ks);
+		if(wParam == VK_SHIFT)
+			_InputTranslateShiftKeyUpDown(&ks);
+		break;
+	default:
+		break;
+	}
+}
+
+static void
+Re3_UpdateBackBufferSize(void)
+{
+	IDirect3DSurface9 *bb = nil;
+	D3DSURFACE_DESC desc;
+
+	if (gRe3ExternalDevice == nil)
+		return;
+
+	if (SUCCEEDED(gRe3ExternalDevice->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &bb))) {
+		if (SUCCEEDED(bb->GetDesc(&desc))) {
+			gRe3BackBufferWidth = (int32)desc.Width;
+			gRe3BackBufferHeight = (int32)desc.Height;
+			RsGlobal.maximumWidth = desc.Width;
+			RsGlobal.maximumHeight = desc.Height;
+			RsGlobal.width = desc.Width;
+			RsGlobal.height = desc.Height;
+		}
+		bb->Release();
+	}
+}
+
+RE3_DLL_EXPORT RwBool
+Re3_Init(HWND hwnd, IDirect3DDevice9 *device, IDirect3D9 *d3d9, const char *gameDir)
+{
+	if (gRe3Inited)
+		return TRUE;
+
+	if (hwnd == nil || device == nil || d3d9 == nil)
+		return FALSE;
+
+	Re3Log("Re3_Init: begin hwnd=%p device=%p d3d9=%p gameDir=%s", hwnd, device, d3d9, gameDir ? gameDir : "(null)");
+	Re3Log("Re3_Init: %s", gRe3BuildId);
+
+	gRe3ExternalWindow = hwnd;
+	gRe3ExternalDevice = device;
+	gRe3ExternalD3D9 = d3d9;
+
+	if (GetCurrentDirectory(MAX_PATH, gRe3PrevCwd) == 0)
+		gRe3PrevCwd[0] = '\0';
+	if (gameDir && gameDir[0] != '\0')
+		SetCurrentDirectory(gameDir);
+	Re3Log("Re3_Init: prev CWD=%s", gRe3PrevCwd);
+	Re3Log("Re3_Init: new CWD=%s", gameDir ? gameDir : "(null)");
+
+#ifdef USE_CUSTOM_ALLOCATOR
+	InitMemoryMgr();
+#endif
+
+	__try {
+		Re3Log("Re3_Init: rsINITIALIZE begin");
+		if (RsEventHandler(rsINITIALIZE, nil) == rsEVENTERROR) {
+			Re3Log("Re3_Init: rsINITIALIZE failed");
+			return FALSE;
+		}
+		Re3Log("Re3_Init: rsINITIALIZE ok");
+	} __except(Re3SehFilter("Re3_Init: exception in rsINITIALIZE", GetExceptionInformation())) {
+		Re3Log("Re3_Init: rsINITIALIZE SEH");
+		return FALSE;
+	}
+
+	PSGLOBAL(window) = hwnd;
+	PSGLOBAL(instance) = GetModuleHandle(nil);
+	Re3Log("Re3_Init: set PSGLOBAL(window)=%p", PSGLOBAL(window));
+
+	ControlsManager.MakeControllerActionsBlank();
+	ControlsManager.InitDefaultControlConfiguration();
+
+	Re3Log("Re3_Init: input init begin");
+	__try {
+		if (_InputInitialise() == S_OK) {
+			_InputInitialiseMouse();
+			_InputInitialiseJoys();
+			Re3Log("Re3_Init: input initialized");
+		}
+	} __except(Re3SehFilter("Re3_Init: exception in input init", GetExceptionInformation())) {
+		Re3Log("Re3_Init: input init SEH");
+	}
+
+	ControlsManager.InitDefaultControlConfigMouse(MousePointerStateHelper.GetMouseSetUp());
+
+	Re3Log("Re3_Init: before RsSetExternalD3D9Device");
+	RsD3D9ExternalDeviceParams d3dParams;
+	d3dParams.d3d9 = d3d9;
+	d3dParams.device = device;
+	d3dParams.present = nil;
+	d3dParams.externalDevice = TRUE;
+	RsSetExternalD3D9Device(&d3dParams);
+	Re3Log("Re3_Init: external device set");
+
+	__try {
+		Re3Log("Re3_Init: rsRWINITIALIZE begin");
+		if (rsEVENTERROR == RsEventHandler(rsRWINITIALIZE, PSGLOBAL(window))) {
+			Re3Log("Re3_Init: rsRWINITIALIZE failed");
+			RsEventHandler(rsTERMINATE, nil);
+			return FALSE;
+		}
+		Re3Log("Re3_Init: rsRWINITIALIZE ok");
+	} __except(Re3SehFilter("Re3_Init: exception in rsRWINITIALIZE", GetExceptionInformation())) {
+		Re3Log("Re3_Init: rsRWINITIALIZE SEH");
+		RsEventHandler(rsTERMINATE, nil);
+		return FALSE;
+	}
+
+	Re3_UpdateBackBufferSize();
+	{
+		RwRect r;
+		r.x = 0;
+		r.y = 0;
+		r.w = RsGlobal.maximumWidth;
+		r.h = RsGlobal.maximumHeight;
+		RsEventHandler(rsCAMERASIZE, &r);
+	}
+
+	__try {
+		Re3Log("Re3_Init: settings load begin");
+		CFileMgr::SetDirMyDocuments();
+
+		int32 gta3set = CFileMgr::OpenFile("gta3.set", "r");
+		if (gta3set) {
+			ControlsManager.LoadSettings(gta3set);
+			CFileMgr::CloseFile(gta3set);
+		}
+
+		CFileMgr::SetDir("");
+		Re3Log("Re3_Init: settings loaded");
+	} __except(Re3SehFilter("Re3_Init: exception in settings load", GetExceptionInformation())) {
+		Re3Log("Re3_Init: settings load SEH");
+	}
+
+	startupDeactivate = TRUE;
+	gGameState = GS_INIT_ONCE;
+
+	gRe3Inited = true;
+	gRe3Running = true;
+	Re3Log("Re3_Init: ok");
+	return TRUE;
+}
+
+RE3_DLL_EXPORT void
+Re3_Run(void)
+{
+	MSG message;
+	RwV2d pos;
+
+	if (!gRe3Inited)
+		return;
+
+	RsGlobal.quit = FALSE;
+
+	Re3Log("Re3_Run: begin");
+	while (TRUE)
+	{
+		RwInitialised = TRUE;
+
+		pos.x = RsGlobal.maximumWidth * 0.5f;
+		pos.y = RsGlobal.maximumHeight * 0.5f;
+
+		RsMouseSetPos(&pos);
+
+		WINDOWPLACEMENT wp;
+		wp.length = sizeof(WINDOWPLACEMENT);
+
+		while (!RsGlobal.quit && !FrontEndMenuManager.m_bWantToRestart)
+		{
+			if (GetAsyncKeyState(VK_F12) & 1) {
+				Re3Log("Re3_Run: F12 exit requested");
+				RsGlobal.quit = TRUE;
+				break;
+			}
+
+			while (PeekMessage(&message, nil, 0U, 0U, PM_REMOVE | PM_NOYIELD))
+			{
+				if (message.message == WM_QUIT)
+				{
+					break;
+				}
+				else
+				{
+					Re3HandleKeyMessage(message.message, message.wParam, message.lParam);
+					TranslateMessage(&message);
+					DispatchMessage(&message);
+				}
+			}
+			while(PeekMessage(&message, PSGLOBAL(window), 0U, 0U, PM_REMOVE|PM_NOYIELD))
+			{
+				Re3HandleKeyMessage(message.message, message.wParam, message.lParam);
+				TranslateMessage(&message);
+				DispatchMessage(&message);
+			}
+#ifndef MASTER
+			if (gbModelViewer) {
+				TheModelViewer();
+			}
+#endif
+			else if (ForegroundApp)
+			{
+				switch (gGameState)
+				{
+					case GS_START_UP:
+					{
+						gGameState = GS_INIT_ONCE;
+						break;
+					}
+
+					case GS_INIT_ONCE:
+					{
+#ifdef FIX_BUGS
+						RsCameraShowRaster(Scene.camera);
+#endif
+
+#ifndef PS2_MENU
+						LoadingScreen(nil, nil, "loadsc0");
+#endif
+						__try {
+							if (!CGame::InitialiseOnceAfterRW())
+								RsGlobal.quit = TRUE;
+						} __except(Re3SehFilter("Re3_Run: exception in InitialiseOnceAfterRW", GetExceptionInformation())) {
+							Re3Log("Re3_Run: InitialiseOnceAfterRW SEH");
+							RsGlobal.quit = TRUE;
+						}
+
+#ifdef PS2_MENU
+						gGameState = GS_INIT_PLAYING_GAME;
+#else
+						gGameState = GS_INIT_FRONTEND;
+						TRACE("gGameState = GS_INIT_FRONTEND;");
+#endif
+						break;
+					}
+
+#ifndef PS2_MENU
+					case GS_INIT_FRONTEND:
+					{
+						LoadingScreen(nil, nil, "loadsc0");
+
+						FrontEndMenuManager.m_bGameNotLoaded = true;
+						CMenuManager::m_bStartUpFrontEndRequested = true;
+
+						gGameState = GS_FRONTEND;
+						TRACE("gGameState = GS_FRONTEND;");
+						break;
+					}
+
+					case GS_FRONTEND:
+					{
+						GetWindowPlacement(PSGLOBAL(window), &wp);
+
+						if (wp.showCmd != SW_SHOWMINIMIZED)
+							RsEventHandler(rsFRONTENDIDLE, nil);
+
+						if (!FrontEndMenuManager.m_bMenuActive || FrontEndMenuManager.m_bWantToLoad)
+						{
+							gGameState = GS_INIT_PLAYING_GAME;
+							TRACE("gGameState = GS_INIT_PLAYING_GAME;");
+						}
+
+						if (FrontEndMenuManager.m_bWantToLoad)
+						{
+							__try {
+								InitialiseGame();
+							} __except(Re3SehFilter("Re3_Run: exception in InitialiseGame", GetExceptionInformation())) {
+								Re3Log("Re3_Run: InitialiseGame SEH");
+								RsGlobal.quit = TRUE;
+								break;
+							}
+							FrontEndMenuManager.m_bGameNotLoaded = false;
+							gGameState = GS_PLAYING_GAME;
+							TRACE("gGameState = GS_PLAYING_GAME;");
+						}
+						break;
+					}
+#endif
+
+					case GS_INIT_PLAYING_GAME:
+					{
+#ifdef PS2_MENU
+						CGame::Initialise("DATA\\GTA3.DAT");
+#else
+						__try {
+							InitialiseGame();
+						} __except(Re3SehFilter("Re3_Run: exception in InitialiseGame", GetExceptionInformation())) {
+							Re3Log("Re3_Run: InitialiseGame SEH");
+							RsGlobal.quit = TRUE;
+							break;
+						}
+						FrontEndMenuManager.m_bGameNotLoaded = false;
+#endif
+						gGameState = GS_PLAYING_GAME;
+						TRACE("gGameState = GS_PLAYING_GAME;");
+						break;
+					}
+
+					case GS_PLAYING_GAME:
+					{
+						float ms = (float)CTimer::GetCurrentTimeInCycles() / (float)CTimer::GetCyclesPerMillisecond();
+						if (RwInitialised)
+						{
+							if (!CMenuManager::m_PrefsFrameLimiter || (1000.0f / (float)RsGlobal.maxFPS) < ms)
+								__try {
+									RsEventHandler(rsIDLE, (void *)TRUE);
+								} __except(Re3SehFilter("Re3_Run: exception in rsIDLE", GetExceptionInformation())) {
+									Re3Log("Re3_Run: rsIDLE SEH");
+								}
+						}
+						break;
+					}
+				}
+			}
+			else
+			{
+				if (RwCameraBeginUpdate(Scene.camera))
+				{
+					RwCameraEndUpdate(Scene.camera);
+					ForegroundApp = TRUE;
+					RsEventHandler(rsACTIVATE, (void *)TRUE);
+				}
+
+				WaitMessage();
+			}
+		}
+
+		RwInitialised = FALSE;
+
+		FrontEndMenuManager.UnloadTextures();
+
+		if (RsGlobal.quit || !FrontEndMenuManager.m_bWantToRestart)
+			break;
+
+		CPad::ResetCheats();
+		CPad::StopPadsShaking();
+
+		DMAudio.ChangeMusicMode(MUSICMODE_DISABLE);
+		CTimer::Stop();
+
+		if (FrontEndMenuManager.m_bWantToLoad)
+		{
+			CGame::ShutDownForRestart();
+			CGame::InitialiseWhenRestarting();
+			DMAudio.ChangeMusicMode(MUSICMODE_GAME);
+			LoadSplash(GetLevelSplashScreen(CGame::currLevel));
+			FrontEndMenuManager.m_bWantToLoad = false;
+		}
+		else
+		{
+#ifndef MASTER
+			if (gbModelViewer)
+				CAnimViewer::Shutdown();
+			else
+#endif
+			if (gGameState == GS_PLAYING_GAME)
+				CGame::ShutDown();
+
+			CTimer::Stop();
+
+			if (FrontEndMenuManager.m_bFirstTime == true)
+			{
+				gGameState = GS_INIT_FRONTEND;
+				TRACE("gGameState = GS_INIT_FRONTEND;");
+			}
+			else
+			{
+				gGameState = GS_INIT_PLAYING_GAME;
+				TRACE("gGameState = GS_INIT_PLAYING_GAME;");
+			}
+		}
+
+		FrontEndMenuManager.m_bFirstTime = false;
+		FrontEndMenuManager.m_bWantToRestart = false;
+	}
+}
+
+RE3_DLL_EXPORT void
+Re3_Shutdown(void)
+{
+	if (!gRe3Inited)
+		return;
+
+	Re3Log("Re3_Shutdown: begin");
+
+	if (gGameState == GS_PLAYING_GAME)
+		CGame::ShutDown();
+
+	__try {
+		DMAudio.Terminate();
+		Re3Log("Re3_Shutdown: DMAudio.Terminate ok");
+	} __except(Re3SehFilter("Re3_Shutdown: exception in DMAudio.Terminate", GetExceptionInformation())) {
+		Re3Log("Re3_Shutdown: DMAudio.Terminate SEH");
+	}
+
+	__try {
+		_InputShutdown();
+		Re3Log("Re3_Shutdown: _InputShutdown ok");
+	} __except(Re3SehFilter("Re3_Shutdown: exception in _InputShutdown", GetExceptionInformation())) {
+		Re3Log("Re3_Shutdown: _InputShutdown SEH");
+	}
+	_psFreeVideoModeList();
+
+	__try {
+		RsEventHandler(rsRWTERMINATE, nil);
+		Re3Log("Re3_Shutdown: rsRWTERMINATE ok");
+	} __except(Re3SehFilter("Re3_Shutdown: exception in rsRWTERMINATE", GetExceptionInformation())) {
+		Re3Log("Re3_Shutdown: rsRWTERMINATE SEH");
+	}
+
+	__try {
+		RsEventHandler(rsTERMINATE, nil);
+		Re3Log("Re3_Shutdown: rsTERMINATE ok");
+	} __except(Re3SehFilter("Re3_Shutdown: exception in rsTERMINATE", GetExceptionInformation())) {
+		Re3Log("Re3_Shutdown: rsTERMINATE SEH");
+	}
+
+	__try {
+		RsSetExternalD3D9Device(nil);
+		Re3Log("Re3_Shutdown: RsSetExternalD3D9Device(nil) ok");
+	} __except(Re3SehFilter("Re3_Shutdown: exception in RsSetExternalD3D9Device", GetExceptionInformation())) {
+		Re3Log("Re3_Shutdown: RsSetExternalD3D9Device SEH");
+	}
+
+	if (gRe3PrevCwd[0] != '\0')
+		SetCurrentDirectory(gRe3PrevCwd);
+
+	gRe3ExternalWindow = nil;
+	gRe3ExternalDevice = nil;
+	gRe3ExternalD3D9 = nil;
+	gRe3Inited = false;
+	gRe3Running = false;
+	Re3Log("Re3_Shutdown: end");
+}
+
+#endif
 
 #define DEVICE_AXIS_MIN -2000
 #define DEVICE_AXIS_MAX 2000

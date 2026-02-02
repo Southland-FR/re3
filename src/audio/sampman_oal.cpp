@@ -65,6 +65,7 @@ bool         _usingEFX;
 float        _fEffectsLevel;
 ALuint       ALEffect = AL_EFFECT_NULL;
 ALuint       ALEffectSlot = AL_EFFECTSLOT_NULL;
+static bool  gEfxInitialised = false;
 struct
 {
 	char id[256];
@@ -257,6 +258,7 @@ release_existing()
 	
 	ALDevice = NULL;
 	ALContext = NULL;
+	gEfxInitialised = false;
 	
 	_fPrevEaxRatioDestination = 0.0f;
 	_usingEFX                 = false;
@@ -294,14 +296,15 @@ set_new_provider(int index)
 		ASSERT(ALContext != NULL);
 		
 		alcMakeContextCurrent(ALContext);
+		if (!gEfxInitialised) {
+			EFXInit();
+			gEfxInitialised = true;
+		}
 	
 		const char* ext=(const char*)alGetString(AL_EXTENSIONS);
-		ASSERT(strstr(ext,"AL_SOFT_loop_points")!=NULL);
 		if ( strstr(ext,"AL_SOFT_loop_points")==NULL )
 		{
-			curprovider=-1;
-			release_existing();
-			return false;
+			debug("OpenAL missing AL_SOFT_loop_points; continuing without loop point support\n");
 		}
 		
 		alListenerf (AL_GAIN,     1.0f);
@@ -312,7 +315,8 @@ set_new_provider(int index)
 		
 		alDistanceModel(AL_INVERSE_DISTANCE_CLAMPED);
 		
-		if ( alcIsExtensionPresent(ALDevice, (ALCchar*)ALC_EXT_EFX_NAME) )
+		if ( alcIsExtensionPresent(ALDevice, (ALCchar*)ALC_EXT_EFX_NAME) &&
+		     alGenAuxiliaryEffectSlots != nil && alGenEffects != nil )
 		{
 			alGenAuxiliaryEffectSlots(1, &ALEffectSlot);
 			alGenEffects(1, &ALEffect);
@@ -889,7 +893,6 @@ cSampleManager::Initialise(void)
 	if ( _bSampmanInitialised )
 		return true;
 
-	EFXInit();
 	CStream::Initialise();
 
 	{

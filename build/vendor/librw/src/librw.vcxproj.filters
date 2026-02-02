@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\anim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\base.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\bmp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\charset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\clump.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\error.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\frame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\geometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\geoplg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\hanim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\matfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\pipeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\plg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\png.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\prim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\raster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\render.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\skin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\tga.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\tristrip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\userdata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\uvanim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\world.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\d3d8.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\d3d8matfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\d3d8render.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\d3d8skin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\d3d9.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\d3d9matfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\d3d9render.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\d3d9skin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\d3d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\d3ddevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\d3dimmed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\d3drender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\xbox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\xboxmatfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\xboxskin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\xboxvfmt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\gl3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\gl3device.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\gl3immed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\gl3matfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\gl3pipe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\gl3raster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\gl3render.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\gl3shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\gl3skin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\wdgl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\glad\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\lodepng\lodepng.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\ps2\pds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\ps2\ps2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\ps2\ps2device.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\ps2\ps2matfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\ps2\ps2raster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\ps2\ps2skin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\args.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\rw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\rwanim.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\rwengine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\rwerror.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\rwobjects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\rwpipeline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\rwplg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\rwplugins.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\rwrender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\rwuserdata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\rwd3d8.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\rwd3d9.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\rwd3d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\rwd3dimpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\rwxbox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\d3d\rwxboximpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\rwgl3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\rwgl3impl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\rwgl3plg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\rwgl3shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\rwwdgl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\glad\glad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\gl\glad\khrplatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\lodepng\lodepng.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\ps2\rwps2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\ps2\rwps2impl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\ps2\rwps2plg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Mac\Home\Documents\GitHub\re3\vendor\librw\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{55939740-B076-3D24-9204-F5B497DC658C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9F858EDC-1900-38AB-9ADA-CB1D2F48C576}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
