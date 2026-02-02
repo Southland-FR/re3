@@ -134,6 +134,7 @@ static bool gRe3Inited = false;
 static bool gRe3Running = false;
 static int32 gRe3BackBufferWidth = 0;
 static int32 gRe3BackBufferHeight = 0;
+static float gRe3ViewportScale = 1.0f;
 static FILE *gRe3Log = nil;
 static const char *gRe3BuildId = "re3_in_sa build " __DATE__ " " __TIME__;
 #endif
@@ -188,10 +189,43 @@ void _psCreateFolder(LPCSTR path)
 const char *_psGetUserFilesFolder()
 {
 #ifdef RE3_IN_SA
+#ifdef USE_MY_DOCUMENTS
+	HKEY hKey = NULL;
+
+	static CHAR szUserFiles[256];
+
+	if ( RegOpenKeyEx(HKEY_CURRENT_USER,
+						REGSTR_PATH_SPECIAL_FOLDERS,
+						REG_OPTION_RESERVED,
+						KEY_READ,
+						&hKey) == ERROR_SUCCESS )
+	{
+		DWORD KeyType;
+		DWORD KeycbData = sizeof(szUserFiles);
+		if ( RegQueryValueEx(hKey,
+							"Personal",
+							NULL,
+							&KeyType,
+							(LPBYTE)szUserFiles,
+							&KeycbData) == ERROR_SUCCESS )
+		{
+			RegCloseKey(hKey);
+			strcat(szUserFiles, "\\GTA3 User Files");
+			_psCreateFolder(szUserFiles);
+			return szUserFiles;
+		}	
+
+		RegCloseKey(hKey);		
+	}
+	
+	strcpy(szUserFiles, "GTA3 User Files");
+	return szUserFiles;
+#else
 	static CHAR szUserFiles[256];
 	strcpy(szUserFiles, "GTA3 User Files");
 	_psCreateFolder(szUserFiles);
 	return szUserFiles;
+#endif
 #else
 #ifdef USE_MY_DOCUMENTS
 	HKEY hKey = NULL;
@@ -2684,6 +2718,9 @@ WinMain(HINSTANCE instance,
 
 static void Re3Log(const char *fmt, ...)
 {
+	static bool gRe3LogEnabled = false;
+	if(!gRe3LogEnabled)
+		return;
 	if(gRe3Log == nil){
 		char exePath[MAX_PATH];
 		GetModuleFileNameA(nil, exePath, MAX_PATH);
@@ -2765,13 +2802,24 @@ Re3_UpdateBackBufferSize(void)
 		if (SUCCEEDED(bb->GetDesc(&desc))) {
 			gRe3BackBufferWidth = (int32)desc.Width;
 			gRe3BackBufferHeight = (int32)desc.Height;
-			RsGlobal.maximumWidth = desc.Width;
-			RsGlobal.maximumHeight = desc.Height;
-			RsGlobal.width = desc.Width;
-			RsGlobal.height = desc.Height;
+			const float scale = (gRe3ViewportScale < 0.5f) ? 0.5f :
+				(gRe3ViewportScale > 1.0f ? 1.0f : gRe3ViewportScale);
+			const uint32 scaledW = (uint32)(desc.Width * scale);
+			const uint32 scaledH = (uint32)(desc.Height * scale);
+			RsGlobal.maximumWidth = scaledW;
+			RsGlobal.maximumHeight = scaledH;
+			RsGlobal.width = scaledW;
+			RsGlobal.height = scaledH;
 		}
 		bb->Release();
 	}
+}
+
+RE3_DLL_EXPORT void
+Re3_SetViewportScale(float scale)
+{
+	gRe3ViewportScale = scale;
+	Re3_UpdateBackBufferSize();
 }
 
 RE3_DLL_EXPORT RwBool
@@ -2877,6 +2925,7 @@ Re3_Init(HWND hwnd, IDirect3DDevice9 *device, IDirect3D9 *d3d9, const char *game
 		}
 
 		CFileMgr::SetDir("");
+		FrontEndMenuManager.LoadSettings();
 		Re3Log("Re3_Init: settings loaded");
 	} __except(Re3SehFilter("Re3_Init: exception in settings load", GetExceptionInformation())) {
 		Re3Log("Re3_Init: settings load SEH");

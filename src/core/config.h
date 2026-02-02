@@ -292,6 +292,16 @@ enum Config {
 #undef SCREEN_DROPLETS
 #endif
 
+#ifdef RE3_IN_SA
+#ifndef USE_MY_DOCUMENTS
+#define USE_MY_DOCUMENTS
+#endif
+#endif
+
+#ifdef RE3_IN_SA
+#undef LOAD_INI_SETTINGS
+#endif
+
 // Particle
 //#define PC_PARTICLE
 //#define PS2_ALTERNATIVE_CARSPLASH // unused on PS2
