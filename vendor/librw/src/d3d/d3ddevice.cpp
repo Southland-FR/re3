@@ -12,6 +12,7 @@
 #include "../rwpipeline.h"
 #include "../rwobjects.h"
 #include "rwd3d.h"
+#include "rwd3d9.h"
 #include "rwd3dimpl.h"
 
 #define PLUGIN_ID 0
@@ -1152,6 +1153,40 @@ beginUpdate(Camera *cam)
 	vp.Height = cam->frameBuffer->height;
 	d3ddevice->SetViewport(&vp);
 
+	// In DLL mode the host app (GTA SA) modifies D3D9 state between frames.
+	// Re-apply all cached render/texture/sampler states to the device.
+	// Unlike restoreD3d9Device(), this does NOT reset shader constants
+	// (lighting, materials, fog) since those are set per-draw-call.
+	if(d3d9Globals.externalDevice){
+		uint32 s, t;
+		for(s = 0; s < MAXNUMSTATES; s++)
+			if(validStates[s])
+				d3ddevice->SetRenderState((D3DRENDERSTATETYPE)s, d3dStates[s]);
+		for(t = 0; t < MAXNUMTEXSTATES; t++)
+			if(validTexStates[t])
+				for(s = 0; s < MAXNUMSTAGES; s++)
+					d3ddevice->SetTextureStageState(s, (D3DTEXTURESTAGESTATETYPE)t, d3dTextureStageStates[t][s]);
+		for(t = 1; t < MAXNUMSAMPLERSTATES; t++)
+			for(s = 0; s < MAXNUMSTAGES; s++)
+				d3ddevice->SetSamplerState(s, (D3DSAMPLERSTATETYPE)t, d3dSamplerStates[t][s]);
+		for(int32 i = 0; i < MAXNUMSTAGES; i++){
+			Raster *raster = rwStateCache.texstage[i].raster;
+			if(raster){
+				D3dRaster *d3draster = GETD3DRASTEREXT(raster);
+				d3ddevice->SetTexture(i, (IDirect3DTexture9*)d3draster->texture);
+			}else
+				d3ddevice->SetTexture(i, nil);
+		}
+		d3ddevice->SetVertexShader(deviceCache.vertexShader);
+		d3ddevice->SetPixelShader(deviceCache.pixelShader);
+		d3ddevice->SetVertexDeclaration(deviceCache.vertexDeclaration);
+		d3ddevice->SetIndices(deviceCache.indices);
+		for(int32 i = 0; i < MAXNUMSTREAMS; i++)
+			d3ddevice->SetStreamSource(i, deviceCache.vertexStreams[i].buffer, deviceCache.vertexStreams[i].offset, deviceCache.vertexStreams[i].stride);
+		d3ddevice->SetMaterial(&d3dmaterial);
+		d3dShaderState.fogDirty = true;
+	}
+
 	// TODO: figure out when to call this
 	d3ddevice->BeginScene();
 }
@@ -1736,6 +1771,8 @@ startD3D(void)
 	HRESULT hr;
 	int vp;
 	if(d3d9Globals.externalDevice){
+		// Still need startMode so format queries/raster creation work
+		d3d9Globals.startMode = d3d9Globals.modes[d3d9Globals.currentMode];
 		return d3d::d3ddevice != nil;
 	}
 	if(d3d9Globals.caps.DevCaps & D3DDEVCAPS_HWTRANSFORMANDLIGHT)
@@ -1897,6 +1934,16 @@ initD3D(void)
 //	setTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_SELECTARG1);
 //	setTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_CONSTANT);
 //	setTextureStageState(0, D3DTSS_COLOROP, D3DTA_CONSTANT);
+
+	// For external device, explicitly set critical states that initD3D
+	// doesn't otherwise initialize. Without this, we inherit whatever
+	// GTA SA had set, which may include COLORWRITEENABLE=0 or ZENABLE=FALSE.
+	if(d3d9Globals.externalDevice){
+		d3ddevice->SetRenderState(D3DRS_ZENABLE, D3DZB_TRUE);
+		d3ddevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
+		d3ddevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
+		d3ddevice->SetRenderState(D3DRS_COLORWRITEENABLE, 0x0000000F);
+	}
 
 	// These states exist, not all do
 	validStates[D3DRS_ZENABLE] = 1;
@@ -2077,9 +2124,11 @@ termD3D(void)
 
 	releaseVideoMemory();
 
-	ULONG ref = d3d::d3ddevice->Release();
-	if(ref != 0)
-		printf("IDirect3D9Device_Release did not destroy\n");
+	if(!d3d9Globals.externalDevice){
+		ULONG ref = d3d::d3ddevice->Release();
+		if(ref != 0)
+			printf("IDirect3D9Device_Release did not destroy\n");
+	}
 	d3d::d3ddevice = nil;
 	return 1;
 }

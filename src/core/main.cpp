@@ -136,6 +136,12 @@ bool gbPrintMemoryUsage;
 
 #ifdef NEW_RENDERER
 bool gbNewRenderer;
+#endif
+#ifdef RE3_IN_SA
+// SA's depth buffer may not have a stencil component; requesting
+// D3DCLEAR_STENCIL causes the entire Clear to fail (including Z).
+#define CLEARMODE (rwCAMERACLEARZ)
+#elif defined(FIX_BUGS)
 #define CLEARMODE (rwCAMERACLEARZ | rwCAMERACLEARSTENCIL)
 #else
 #define CLEARMODE (rwCAMERACLEARZ)

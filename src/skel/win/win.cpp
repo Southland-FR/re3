@@ -3042,23 +3042,14 @@ Re3_Run(void)
 
 						if (!FrontEndMenuManager.m_bMenuActive || FrontEndMenuManager.m_bWantToLoad)
 						{
+							// Clear m_bWantToRestart so the inner loop doesn't exit
+							// before GS_INIT_PLAYING_GAME gets a chance to run.
+							// rsFRONTENDIDLE may have set it alongside m_bWantToLoad.
+							FrontEndMenuManager.m_bWantToRestart = false;
 							gGameState = GS_INIT_PLAYING_GAME;
 							TRACE("gGameState = GS_INIT_PLAYING_GAME;");
 						}
 
-						if (FrontEndMenuManager.m_bWantToLoad)
-						{
-							__try {
-								InitialiseGame();
-							} __except(Re3SehFilter("Re3_Run: exception in InitialiseGame", GetExceptionInformation())) {
-								Re3Log("Re3_Run: InitialiseGame SEH");
-								RsGlobal.quit = TRUE;
-								break;
-							}
-							FrontEndMenuManager.m_bGameNotLoaded = false;
-							gGameState = GS_PLAYING_GAME;
-							TRACE("gGameState = GS_PLAYING_GAME;");
-						}
 						break;
 					}
 #endif
@@ -3076,6 +3067,7 @@ Re3_Run(void)
 							break;
 						}
 						FrontEndMenuManager.m_bGameNotLoaded = false;
+						FrontEndMenuManager.m_bWantToRestart = false;
 #endif
 						gGameState = GS_PLAYING_GAME;
 						TRACE("gGameState = GS_PLAYING_GAME;");
@@ -3093,6 +3085,20 @@ Re3_Run(void)
 								} __except(Re3SehFilter("Re3_Run: exception in rsIDLE", GetExceptionInformation())) {
 									Re3Log("Re3_Run: rsIDLE SEH");
 								}
+						}
+						if (FrontEndMenuManager.m_bWantToLoad)
+						{
+							Re3Log("Re3_Run: want to load, restarting");
+							CPad::ResetCheats();
+							CPad::StopPadsShaking();
+							DMAudio.ChangeMusicMode(MUSICMODE_DISABLE);
+							CGame::ShutDownForRestart();
+							CTimer::Stop();
+							CGame::InitialiseWhenRestarting();
+							DMAudio.ChangeMusicMode(MUSICMODE_GAME);
+							LoadSplash(GetLevelSplashScreen(CGame::currLevel));
+							FrontEndMenuManager.m_bWantToLoad = false;
+							FrontEndMenuManager.m_bWantToRestart = false;
 						}
 						break;
 					}
