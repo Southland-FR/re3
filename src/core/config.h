@@ -359,6 +359,11 @@ enum Config {
 
 // Script
 #define USE_DEBUG_SCRIPT_LOADER	// Loads main.scm by default. Hold R for main_freeroam.scm and D for main_d.scm
+#ifdef RE3_IN_SA
+// SA owns the keyboard while re3 is embedded. Its normal R/D input must not
+// select re3's optional developer scripts, which are not part of a retail game.
+#undef USE_DEBUG_SCRIPT_LOADER
+#endif
 #define USE_MEASUREMENTS_IN_METERS // makes game use meters instead of feet in script
 #define USE_PRECISE_MEASUREMENT_CONVERTION // makes game convert feet to meeters more precisely
 #ifdef PC_MENU

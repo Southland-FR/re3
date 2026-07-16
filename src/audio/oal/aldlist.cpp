@@ -36,7 +36,7 @@
  */
 ALDeviceList::ALDeviceList()
 {
-	char *devices;
+	const char *devices;
 	int index;
 	const char *defaultDeviceName;
 	const char *actualDeviceName;
@@ -47,13 +47,13 @@ ALDeviceList::ALDeviceList()
 	defaultDeviceIndex = 0;
 
 	if (alcIsExtensionPresent(NULL, "ALC_ENUMERATION_EXT")) {
-		devices = (char *)alcGetString(NULL, ALC_DEVICE_SPECIFIER);
-		defaultDeviceName = (char *)alcGetString(NULL, ALC_DEFAULT_DEVICE_SPECIFIER);
+		devices = (const char *)alcGetString(NULL, ALC_DEVICE_SPECIFIER);
+		defaultDeviceName = (const char *)alcGetString(NULL, ALC_DEFAULT_DEVICE_SPECIFIER);
 		
 		index = 0;
 		// go through device list (each device terminated with a single NULL, list terminated with double NULL)
-		while (*devices != '\0') {
-			if (strcmp(defaultDeviceName, devices) == 0) {
+		while (devices && *devices != '\0') {
+			if (defaultDeviceName && strcmp(defaultDeviceName, devices) == 0) {
 				defaultDeviceIndex = index;
 			}
 			ALCdevice *device = alcOpenDevice(devices);
@@ -115,6 +115,30 @@ ALDeviceList::ALDeviceList()
 			}
 			devices += strlen(devices) + 1;
 			index += 1;
+		}
+	}
+
+	// Fallback for runtimes that can't enumerate but can still open the default device.
+	if (nNumOfDevices == 0) {
+		ALCdevice *device = alcOpenDevice(NULL);
+		if (device) {
+			ALCcontext *context = alcCreateContext(device, NULL);
+			if (context) {
+				alcMakeContextCurrent(context);
+				actualDeviceName = alcGetString(device, ALC_DEVICE_SPECIFIER);
+				if ((actualDeviceName != NULL) && (strlen(actualDeviceName) > 0)) {
+					ALDEVICEINFO ALDeviceInfo;
+					ALDeviceInfo.bSelected = true;
+					ALDeviceInfo.strDeviceName = _strdup(actualDeviceName);
+					alcGetIntegerv(device, ALC_MAJOR_VERSION, sizeof(int), &ALDeviceInfo.iMajorVersion);
+					alcGetIntegerv(device, ALC_MINOR_VERSION, sizeof(int), &ALDeviceInfo.iMinorVersion);
+					ALDeviceInfo.uiSourceCount = GetMaxNumSources();
+					aDeviceInfo[nNumOfDevices++] = ALDeviceInfo;
+				}
+				alcMakeContextCurrent(NULL);
+				alcDestroyContext(context);
+			}
+			alcCloseDevice(device);
 		}
 	}
 

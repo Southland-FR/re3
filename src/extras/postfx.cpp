@@ -16,7 +16,14 @@
 RwRaster *CPostFX::pFrontBuffer;
 RwRaster *CPostFX::pBackBuffer;
 bool CPostFX::bJustInitialised;
+#ifdef RE3_IN_SA
+// The colour filters start once the world timecycle is active and strongly
+// tint an off-screen guest texture. Keep the embedded TV feed neutral; the
+// standalone build retains its normal selectable post-processing modes.
+int CPostFX::EffectSwitch = POSTFX_OFF;
+#else
 int CPostFX::EffectSwitch = POSTFX_NORMAL;
+#endif
 bool CPostFX::MotionBlurOn = false;
 
 static RwIm2DVertex Vertex[4];

@@ -1076,33 +1076,23 @@ const int   re3_buffsize = 1024;
 static char re3_buff[re3_buffsize];
 #endif
 
+#ifdef RE3_IN_SA
+extern void Re3Log(const char *fmt, ...);
+#endif
+
 #ifndef MASTER
 void re3_assert(const char *expr, const char *filename, unsigned int lineno, const char *func)
 {
 #ifdef _WIN32
 	int nCode;
 
-	strcpy_s(re3_buff, re3_buffsize, "Assertion failed!" );
-	strcat_s(re3_buff, re3_buffsize, "\n" );	
-	
-	strcat_s(re3_buff, re3_buffsize, "File: ");
-	strcat_s(re3_buff, re3_buffsize, filename );
-	strcat_s(re3_buff, re3_buffsize, "\n" );	
-
-	strcat_s(re3_buff, re3_buffsize, "Line: " );
-	_itoa_s( lineno, re3_buff + strlen(re3_buff), re3_buffsize - strlen(re3_buff), 10 );
-	strcat_s(re3_buff, re3_buffsize, "\n");
-	
-	strcat_s(re3_buff, re3_buffsize, "Function: ");
-	strcat_s(re3_buff, re3_buffsize, func );
-	strcat_s(re3_buff, re3_buffsize, "\n" );	
-	
-	strcat_s(re3_buff, re3_buffsize, "Expression: ");
-	strcat_s(re3_buff, re3_buffsize, expr);
-	strcat_s(re3_buff, re3_buffsize, "\n");
-
-	strcat_s(re3_buff, re3_buffsize, "\n" );
-	strcat_s(re3_buff, re3_buffsize, "(Press Retry to debug the application)");
+#ifdef RE3_IN_SA
+	Re3Log("ASSERT file=%s line=%u function=%s expression=%s", filename, lineno, func, expr);
+#endif
+	_snprintf_s(re3_buff, re3_buffsize, _TRUNCATE,
+		"Assertion failed!\nFile: %s\nLine: %u\nFunction: %s\nExpression: %s\n\n"
+		"(Press Retry to debug the application)",
+		filename, lineno, func, expr);
 
 
 	nCode = ::MessageBoxA(nil, re3_buff, "RE3 Assertion Failed!",
@@ -1138,7 +1128,7 @@ void re3_debug(const char *format, ...)
 	va_list va;
 	va_start(va, format);
 #ifdef _WIN32
-	vsprintf_s(re3_buff, re3_buffsize, format, va);
+	_vsnprintf_s(re3_buff, re3_buffsize, _TRUNCATE, format, va);
 #else
 	vsprintf(re3_buff, format, va);
 #endif
@@ -1156,7 +1146,7 @@ void re3_trace(const char *filename, unsigned int lineno, const char *func, cons
 	va_list va;
 	va_start(va, format);
 #ifdef _WIN32
-	vsprintf_s(re3_buff, re3_buffsize, format, va);
+	_vsnprintf_s(re3_buff, re3_buffsize, _TRUNCATE, format, va);
 	va_end(va);
 	
 	sprintf_s(buff, re3_buffsize * 2, "[%s.%s:%d]: %s", filename, func, lineno, re3_buff);
@@ -1177,7 +1167,7 @@ void re3_usererror(const char *format, ...)
 	va_list va;
 	va_start(va, format);
 #ifdef _WIN32
-	vsprintf_s(re3_buff, re3_buffsize, format, va);
+	_vsnprintf_s(re3_buff, re3_buffsize, _TRUNCATE, format, va);
 	va_end(va);
 	
 	::MessageBoxA(nil, re3_buff, "RE3 Error!",
