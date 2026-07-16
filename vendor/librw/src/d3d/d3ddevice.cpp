@@ -228,6 +228,7 @@ setExternalD3D9Device(HWND window, IDirect3DDevice9 *device, IDirect3D9 *d3d9)
 void
 unsetExternalD3D9Device(void)
 {
+	setExternalD3D9RenderTarget(nil, nil, false);
 	d3d9Globals.externalDevice = 0;
 	d3d::d3ddevice = nil;
 	d3d9Globals.d3d9 = nil;
@@ -237,6 +238,18 @@ bool32
 isExternalD3D9Device(void)
 {
 	return d3d9Globals.externalDevice != 0;
+}
+
+static IDirect3DSurface9 *externalRenderTarget = nil;
+static IDirect3DSurface9 *externalDepthSurface = nil;
+static bool32 externalSkipPresent = false;
+
+void
+setExternalD3D9RenderTarget(IDirect3DSurface9 *color, IDirect3DSurface9 *depth, bool32 skipPresent)
+{
+	externalRenderTarget = color;
+	externalDepthSurface = depth;
+	externalSkipPresent = skipPresent;
 }
 
 
@@ -1039,6 +1052,17 @@ destroyPixelShader(void *shader)
 static void
 setRenderSurfaces(Camera *cam)
 {
+	if(d3d9Globals.externalDevice && externalRenderTarget != nil){
+		// The host restores its own render target after every guest frame without
+		// going through librw, so librw's device cache cannot tell us what is
+		// actually bound here. Always bind the guest surfaces on the real device.
+		deviceCache.renderTargets[0] = externalRenderTarget;
+		d3ddevice->SetRenderTarget(0, externalRenderTarget);
+		deviceCache.depthSurface = externalDepthSurface;
+		d3ddevice->SetDepthStencilSurface(externalDepthSurface);
+		return;
+	}
+
 	Raster *fbuf = cam->frameBuffer;
 	assert(fbuf);
 	{
@@ -1468,6 +1492,9 @@ clearCamera(Camera *cam, RGBA *col, uint32 mode)
 static void
 showRaster(Raster *raster, uint32 flag)
 {
+	if(d3d9Globals.externalDevice && externalSkipPresent)
+		return;
+
 	UINT interval = flag & Raster::FLIPWAITVSYNCH ? D3DPRESENT_INTERVAL_ONE : D3DPRESENT_INTERVAL_IMMEDIATE;
 	if(d3d9Globals.present.PresentationInterval != interval){
 		d3d9Globals.present.PresentationInterval = interval;
