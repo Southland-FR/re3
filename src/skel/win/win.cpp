@@ -126,6 +126,7 @@ char gSelectedJoystickName[128] = "";
 #endif
 
 #ifdef RE3_IN_SA
+extern "C" void Re3_DestroyNestedScreen(void);
 static HWND gRe3ExternalWindow = nil;
 static IDirect3DDevice9 *gRe3ExternalDevice = nil;
 static IDirect3D9 *gRe3ExternalD3D9 = nil;
@@ -3407,6 +3408,7 @@ Re3_Shutdown(void)
 	Re3UseGameDirectory();
 
 	Re3Log("Re3_Shutdown: begin");
+	Re3_DestroyNestedScreen();
 
 	if (gGameState == GS_PLAYING_GAME)
 		CGame::ShutDown();

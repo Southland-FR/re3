@@ -1,3 +1,6 @@
+#ifdef RE3_IN_SA
+#include <d3d9.h>
+#endif
 #include "common.h"
 #include <time.h>
 #include "rpmatfx.h"
@@ -72,11 +75,177 @@
 #include "custompipes.h"
 #include "screendroplets.h"
 #include "MemoryHeap.h"
+#include "crossplatform.h"
+#include "ModelInfo.h"
 #ifdef USE_OUR_VERSIONING
 #include "GitSHA1.h"
 #endif
 
 GlobalScene Scene;
+
+#ifdef RE3_IN_SA
+extern void Re3Log(const char *fmt, ...);
+extern RwUInt32 gGameState;
+
+static RwRaster *gRe3NestedRaster = nil;
+static RwTexture *gRe3NestedTexture = nil;
+static IDirect3DTexture9 *gRe3NestedD3DTexture = nil;
+static IDirect3DSurface9 *gRe3NestedSurface = nil;
+static IDirect3DSurface9 *gRe3NestedDepth = nil;
+static RwBool gRe3NestedScreenVisible = FALSE;
+static RwBool gRe3NestedBillboardLogged = FALSE;
+
+static void
+Re3DestroyNestedScreenResources(void)
+{
+	gRe3NestedScreenVisible = FALSE;
+	gRe3NestedBillboardLogged = FALSE;
+	if(gRe3NestedDepth) {
+		gRe3NestedDepth->Release();
+		gRe3NestedDepth = nil;
+	}
+	if(gRe3NestedSurface) {
+		gRe3NestedSurface->Release();
+		gRe3NestedSurface = nil;
+	}
+	gRe3NestedD3DTexture = nil; // owned by the RW raster
+	if(gRe3NestedTexture) {
+		RwTextureDestroy(gRe3NestedTexture);
+		gRe3NestedTexture = nil;
+		gRe3NestedRaster = nil;
+	} else if(gRe3NestedRaster) {
+		RwRasterDestroy(gRe3NestedRaster);
+		gRe3NestedRaster = nil;
+	}
+}
+
+extern "C" __declspec(dllexport) RwBool
+Re3_CreateNestedScreen(RwUInt32 width, RwUInt32 height,
+	IDirect3DSurface9 **color, IDirect3DSurface9 **depth)
+{
+	if(color) *color = nil;
+	if(depth) *depth = nil;
+	Re3DestroyNestedScreenResources();
+	if(width == 0 || height == 0 || rw::d3d::d3ddevice == nil)
+		return FALSE;
+
+	gRe3NestedRaster = RwRasterCreate(width, height, 32,
+		rwRASTERTYPECAMERATEXTURE | rwRASTERFORMAT8888);
+	if(gRe3NestedRaster == nil)
+		return FALSE;
+	gRe3NestedTexture = RwTextureCreate(gRe3NestedRaster);
+	if(gRe3NestedTexture == nil) {
+		Re3DestroyNestedScreenResources();
+		return FALSE;
+	}
+	RwTextureSetName(gRe3NestedTexture, "REVC_NESTED_SCREEN");
+	RwTextureSetFilterMode(gRe3NestedTexture, rwFILTERLINEAR);
+	RwTextureSetAddressing(gRe3NestedTexture, rwTEXTUREADDRESSCLAMP);
+
+	rw::d3d::D3dRaster *nativeRaster = GETD3DRASTEREXT(gRe3NestedRaster);
+	gRe3NestedD3DTexture = nativeRaster ?
+		reinterpret_cast<IDirect3DTexture9 *>(nativeRaster->texture) : nil;
+	if(gRe3NestedD3DTexture == nil ||
+		FAILED(gRe3NestedD3DTexture->GetSurfaceLevel(0, &gRe3NestedSurface))) {
+		Re3Log("NestedVC: failed to obtain native color surface");
+		Re3DestroyNestedScreenResources();
+		return FALSE;
+	}
+
+	D3DFORMAT depthFormat = D3DFMT_D24S8;
+	IDirect3DSurface9 *currentDepth = nil;
+	if(SUCCEEDED(rw::d3d::d3ddevice->GetDepthStencilSurface(&currentDepth)) && currentDepth) {
+		D3DSURFACE_DESC desc;
+		if(SUCCEEDED(currentDepth->GetDesc(&desc)))
+			depthFormat = desc.Format;
+		currentDepth->Release();
+	}
+
+	HRESULT hr = rw::d3d::d3ddevice->CreateDepthStencilSurface(width, height,
+		depthFormat, D3DMULTISAMPLE_NONE, 0, TRUE, &gRe3NestedDepth, nil);
+	if(FAILED(hr))
+		hr = rw::d3d::d3ddevice->CreateDepthStencilSurface(width, height,
+			D3DFMT_D24X8, D3DMULTISAMPLE_NONE, 0, TRUE, &gRe3NestedDepth, nil);
+	if(FAILED(hr))
+		hr = rw::d3d::d3ddevice->CreateDepthStencilSurface(width, height,
+			D3DFMT_D16, D3DMULTISAMPLE_NONE, 0, TRUE, &gRe3NestedDepth, nil);
+	if(FAILED(hr) || gRe3NestedDepth == nil) {
+		Re3Log("NestedVC: failed to create depth surface hr=0x%08X", (unsigned)hr);
+		Re3DestroyNestedScreenResources();
+		return FALSE;
+	}
+
+	if(color) *color = gRe3NestedSurface;
+	if(depth) *depth = gRe3NestedDepth;
+	Re3Log("NestedVC: target ready %ux%u color=%p depth=%p",
+		(unsigned)width, (unsigned)height, gRe3NestedSurface, gRe3NestedDepth);
+	return TRUE;
+}
+
+extern "C" __declspec(dllexport) void
+Re3_ShowNestedScreen(RwBool visible)
+{
+	if(!visible || gRe3NestedTexture == nil) {
+		gRe3NestedScreenVisible = FALSE;
+		return;
+	}
+
+	gRe3NestedScreenVisible = TRUE;
+	gRe3NestedBillboardLogged = FALSE;
+	Re3Log("NestedVC: westpostsign material armed");
+}
+
+extern "C" __declspec(dllexport) void
+Re3_DestroyNestedScreen(void)
+{
+	Re3DestroyNestedScreenResources();
+	Re3Log("NestedVC: screen destroyed");
+}
+
+static void
+ApplyNestedVcBillboardTexture(RpMaterial **replacedMaterial, RwTexture **originalTexture)
+{
+	*replacedMaterial = nil;
+	*originalTexture = nil;
+	if(!gRe3NestedScreenVisible || gRe3NestedTexture == nil || gGameState != GS_PLAYING_GAME)
+		return;
+
+	CBaseModelInfo *modelInfo = CModelInfo::GetModelInfo(957); // westpostsign
+	if(modelInfo == nil || !modelInfo->IsSimple())
+		return;
+	RwObject *rwObject = modelInfo->GetRwObject();
+	if(rwObject == nil || RwObjectGetType(rwObject) != rpATOMIC)
+		return;
+	RpGeometry *geometry = RpAtomicGetGeometry((RpAtomic *)rwObject);
+	if(geometry == nil)
+		return;
+
+	for(int32 i = 0; i < geometry->matList.numMaterials; i++) {
+		RpMaterial *material = RpGeometryGetMaterial(geometry, i);
+		RwTexture *texture = material ? RpMaterialGetTexture(material) : nil;
+		const char *name = texture ? RwTextureGetName(texture) : nil;
+		if(name == nil || strcasecmp(name, "westportsign4") != 0)
+			continue;
+		*replacedMaterial = material;
+		*originalTexture = texture;
+		// The model geometry is shared by its world atomic. Substitute only for
+		// this render pass and restore immediately afterwards.
+		material->texture = gRe3NestedTexture;
+		if(!gRe3NestedBillboardLogged) {
+			Re3Log("NestedVC: hooked westpostsign model=957 material=westportsign4");
+			gRe3NestedBillboardLogged = TRUE;
+		}
+		return;
+	}
+}
+
+static void
+RestoreNestedVcBillboardTexture(RpMaterial *material, RwTexture *originalTexture)
+{
+	if(material)
+		material->texture = originalTexture;
+}
+#endif
 
 uint8 work_buff[55000];
 char gString[256];
@@ -1394,6 +1563,11 @@ RenderScene(void)
 	}
 #endif
 	PUSH_RENDERGROUP("RenderScene");
+#ifdef RE3_IN_SA
+	RpMaterial *nestedBillboardMaterial = nil;
+	RwTexture *nestedBillboardOriginalTexture = nil;
+	ApplyNestedVcBillboardTexture(&nestedBillboardMaterial, &nestedBillboardOriginalTexture);
+#endif
 	CClouds::Render();
 	DoRWRenderHorizon();
 	CRenderer::RenderRoads();
@@ -1408,6 +1582,9 @@ RenderScene(void)
 	CRenderer::RenderVehiclesButNotBoats();
 #endif
 	CWeather::RenderRainStreaks();
+#ifdef RE3_IN_SA
+	RestoreNestedVcBillboardTexture(nestedBillboardMaterial, nestedBillboardOriginalTexture);
+#endif
 	POP_RENDERGROUP();
 }
 

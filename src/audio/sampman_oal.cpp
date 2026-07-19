@@ -59,6 +59,15 @@ int           usingEAX3=0;
 //int         speaker_type=0;
 ALCdevice    *ALDevice = NULL;
 ALCcontext   *ALContext = NULL;
+
+static ALCboolean
+SetEngineThreadContext(ALCcontext *context)
+{
+	static PFNALCSETTHREADCONTEXTPROC setThreadContext = NULL;
+	if(setThreadContext == NULL && ALDevice != NULL)
+		setThreadContext = (PFNALCSETTHREADCONTEXTPROC)alcGetProcAddress(ALDevice, "alcSetThreadContext");
+	return setThreadContext ? setThreadContext(context) : alcMakeContextCurrent(context);
+}
 unsigned int _maxSamples;
 float        _fPrevEaxRatioDestination;
 bool         _usingEFX;
@@ -74,6 +83,21 @@ struct
 }providers[MAXPROVIDERS];
 
 int defaultProvider;
+
+#if defined(RE3_DLL) || defined(RE3_IN_SA)
+// re3 and the nested reVC share one OpenAL32.dll. Bind this engine's
+// context to the caller thread before its frame, and silence it while VC
+// owns audio focus.
+extern "C" __declspec(dllexport) RwBool
+Re3_ActivateAudioContext(RwBool audible)
+{
+	if(ALContext == NULL || SetEngineThreadContext(ALContext) == ALC_FALSE)
+		return FALSE;
+	alGetError();
+	alListenerf(AL_GAIN, audible ? 1.0f : 0.0f);
+	return alGetError() == AL_NO_ERROR;
+}
+#endif
 
 
 char SampleBankDescFilename[] = "audio/sfx.SDT";
@@ -249,6 +273,7 @@ release_existing()
 	
 	if ( ALContext )
 	{
+		SetEngineThreadContext(NULL);
 		alcMakeContextCurrent(NULL);
 		alcSuspendContext(ALContext);
 		alcDestroyContext(ALContext);
@@ -296,6 +321,7 @@ set_new_provider(int index)
 		ASSERT(ALContext != NULL);
 		
 		alcMakeContextCurrent(ALContext);
+		SetEngineThreadContext(ALContext);
 		if (!gEfxInitialised) {
 			EFXInit();
 			gEfxInitialised = true;

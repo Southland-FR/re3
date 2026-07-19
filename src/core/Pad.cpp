@@ -70,6 +70,25 @@ CMouseControllerState CPad::OldMouseControllerState;
 CMouseControllerState CPad::NewMouseControllerState;
 CMouseControllerState CPad::PCTempMouseControllerState;
 
+#if defined(RE3_IN_SA)
+static bool gRe3MouseInputEnabled = true;
+
+extern "C" __declspec(dllexport) void
+Re3_SetMouseInputEnabled(RwBool enabled)
+{
+	const bool shouldEnable = enabled != FALSE;
+	gRe3MouseInputEnabled = shouldEnable;
+	Pads[0].PCTempMouseState.Clear();
+	Pads[0].ClearMouseHistory();
+	if(PSGLOBAL(mouse) != nil){
+		if(shouldEnable)
+			PSGLOBAL(mouse)->Acquire();
+		else
+			PSGLOBAL(mouse)->Unacquire();
+	}
+}
+#endif
+
 #ifdef DETECT_PAD_INPUT_SWITCH
 bool CPad::IsAffectedByController = false;
 #endif
@@ -545,6 +564,13 @@ CMouseControllerState CMousePointerStateHelper::GetMouseSetUp()
 
 void CPad::UpdateMouse()
 {
+#if defined(RE3_IN_SA)
+	if(!gRe3MouseInputEnabled){
+		PCTempMouseState.Clear();
+		ClearMouseHistory();
+		return;
+	}
+#endif
 #if defined RW_D3D9 || defined RWLIBS
 	if ( IsForegroundApp() )
 	{
