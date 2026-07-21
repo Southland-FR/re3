@@ -17,6 +17,10 @@
 #include "Renderer.h"
 #include "Camera.h"
 
+#ifdef RE3_IN_SA
+extern bool Re3PortalBlocksPlayerArrest(void);
+#endif
+
 CCopPed::CCopPed(eCopType copType) : CPed(PEDTYPE_COP)
 {
 	m_nCopType = copType;
@@ -88,6 +92,10 @@ CCopPed::SetArrestPlayer(CPed *player)
 {
 	if (!IsPedInControl() || !player)
 		return;
+#ifdef RE3_IN_SA
+	if (player->IsPlayer() && Re3PortalBlocksPlayerArrest())
+		return;
+#endif
 
 	switch (m_nCopType) {
 		case COP_FBI:
@@ -225,6 +233,12 @@ CCopPed::SetPursuit(bool ignoreCopLimit)
 void
 CCopPed::ArrestPlayer(void)
 {
+#ifdef RE3_IN_SA
+	if (Re3PortalBlocksPlayerArrest()) {
+		ClearPursuit();
+		return;
+	}
+#endif
 	m_pVehicleAnim = nil;
 	CPed *suspect = (CPed*)m_pSeekTarget;
 	if (suspect) {

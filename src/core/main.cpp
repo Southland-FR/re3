@@ -86,6 +86,13 @@ GlobalScene Scene;
 #ifdef RE3_IN_SA
 extern void Re3Log(const char *fmt, ...);
 extern RwUInt32 gGameState;
+extern void Re3PortalProcessCommands(void);
+extern void Re3PortalUpdatePlayerProtection(void);
+extern void Re3PortalApplyCamera(void);
+extern void Re3PortalApplyViewWindow(void);
+extern void Re3PortalUpdateReturnPortal(void);
+extern void Re3PortalRenderReturnPortal(void);
+extern bool Re3PortalShouldRenderHud(void);
 
 static RwRaster *gRe3NestedRaster = nil;
 static RwTexture *gRe3NestedTexture = nil;
@@ -247,6 +254,16 @@ RestoreNestedVcBillboardTexture(RpMaterial *material, RwTexture *originalTexture
 }
 #endif
 
+static bool
+ShouldRenderHudAndMenus(void)
+{
+#ifdef RE3_IN_SA
+	return Re3PortalShouldRenderHud();
+#else
+	return true;
+#endif
+}
+
 uint8 work_buff[55000];
 char gString[256];
 char gString2[512];
@@ -380,6 +397,9 @@ DoRWStuffStartOfFrame(int16 TopRed, int16 TopGreen, int16 TopBlue, int16 BottomR
 #else
 	CameraSize(Scene.camera, nil, SCREEN_VIEWWINDOW, SCREEN_ASPECT_RATIO);
 #endif
+#ifdef RE3_IN_SA
+	Re3PortalApplyViewWindow();
+#endif
 	CVisibilityPlugins::SetRenderWareCamera(Scene.camera);
 	RwCameraClear(Scene.camera, &TopColor.rwRGBA, CLEARMODE);
 
@@ -404,6 +424,9 @@ DoRWStuffStartOfFrame_Horizon(int16 TopRed, int16 TopGreen, int16 TopBlue, int16
 	CameraSize(Scene.camera, nil, SCREEN_VIEWWINDOW, (CMenuManager::m_PrefsUseWideScreen ? 16.f/9.f : 4.f/3.f));
 #else
 	CameraSize(Scene.camera, nil, SCREEN_VIEWWINDOW, SCREEN_ASPECT_RATIO);
+#endif
+#ifdef RE3_IN_SA
+	Re3PortalApplyViewWindow();
 #endif
 	CVisibilityPlugins::SetRenderWareCamera(Scene.camera);
 	RwCameraClear(Scene.camera, &gColourTop, CLEARMODE);
@@ -1773,8 +1796,17 @@ Idle(void *arg)
 	CPointLights::InitPerFrame();
 
 	tbStartTimer(0, "CGame::Process");
+#ifdef RE3_IN_SA
+	Re3PortalUpdatePlayerProtection();
+#endif
 	CGame::Process();
 	tbEndTimer("CGame::Process");
+#ifdef RE3_IN_SA
+	Re3PortalProcessCommands();
+	Re3PortalUpdatePlayerProtection();
+	Re3PortalApplyCamera();
+	Re3PortalUpdateReturnPortal();
+#endif
 	POP_MEMID();
 
 	tbStartTimer(0, "DMAudio.Service");
@@ -1863,6 +1895,11 @@ Idle(void *arg)
 
 		RenderDebugShit();
 		RenderEffects();
+#ifdef RE3_IN_SA
+		// Composite the SA aperture after GTA III's alpha/effect passes so
+		// coronas and late geometry cannot bleed over the remote image.
+		Re3PortalRenderReturnPortal();
+#endif
 
 		if((TheCamera.m_BlurType == MOTION_BLUR_NONE || TheCamera.m_BlurType == MOTION_BLUR_LIGHT_SCENE) &&
 		   TheCamera.m_ScreenReductionPercentage > 0.0f)
@@ -1879,7 +1916,8 @@ Idle(void *arg)
 		tbEndTimer("RenderMotionBlur");
 
 		tbStartTimer(0, "Render2dStuff");
-		Render2dStuff();
+		if(ShouldRenderHudAndMenus())
+			Render2dStuff();
 		tbEndTimer("Render2dStuff");
 	}else{
 #ifdef ASPECT_RATIO_SCALE
@@ -1898,7 +1936,8 @@ Idle(void *arg)
 		DefinedState();
 #endif
 	tbStartTimer(0, "RenderMenus");
-	RenderMenus();
+	if(ShouldRenderHudAndMenus())
+		RenderMenus();
 	tbEndTimer("RenderMenus");
 
 #ifdef PS2_MENU
@@ -1907,17 +1946,20 @@ Idle(void *arg)
 #endif
 
 	tbStartTimer(0, "DoFade");
-	DoFade();
+	if(ShouldRenderHudAndMenus())
+		DoFade();
 	tbEndTimer("DoFade");
 
 	tbStartTimer(0, "Render2dStuff-Fade");
-	Render2dStuffAfterFade();
+	if(ShouldRenderHudAndMenus())
+		Render2dStuffAfterFade();
 	tbEndTimer("Render2dStuff-Fade");
 
-	CCredits::Render();
+	if(ShouldRenderHudAndMenus())
+		CCredits::Render();
 
 
-	if (gbShowTimebars)
+	if (gbShowTimebars && ShouldRenderHudAndMenus())
 		tbDisplay();
 
 	DoRWStuffEndOfFrame();

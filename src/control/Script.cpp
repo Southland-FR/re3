@@ -38,6 +38,10 @@
 #include <stdarg.h>
 #endif
 
+#ifdef RE3_IN_SA
+extern bool Re3_IsPortalMode(void);
+#endif
+
 uint8 CTheScripts::ScriptSpace[SIZE_SCRIPT_SPACE];
 CRunningScript CTheScripts::ScriptsArray[MAX_NUM_SCRIPTS];
 int32 CTheScripts::BaseBriefIdForContact[MAX_NUM_CONTACTS];
@@ -1805,11 +1809,15 @@ void CTheScripts::Init()
 	UpsideDownCars.Init();
 	StuckCars.Init();
 	CFileMgr::SetDir("data");
-#ifdef USE_DEBUG_SCRIPT_LOADER
+	#ifdef RE3_IN_SA
+	int mainf = CFileMgr::OpenFile(Re3_IsPortalMode() ? "main_freeroam.scm" : "main.scm", "rb");
+	if(mainf == 0)
+		mainf = CFileMgr::OpenFile("main.scm", "rb");
+	#elif defined(USE_DEBUG_SCRIPT_LOADER)
 	int mainf = open_script();
-#else
+	#else
 	int mainf = CFileMgr::OpenFile("main.scm", "rb");
-#endif
+	#endif
 	CFileMgr::Read(mainf, (char*)ScriptSpace, SIZE_MAIN_SCRIPT);
 	CFileMgr::CloseFile(mainf);
 	CFileMgr::SetDir("");

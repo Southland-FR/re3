@@ -134,6 +134,9 @@ static char gRe3PrevCwd[MAX_PATH] = "";
 static char gRe3GameDir[MAX_PATH] = "";
 static bool gRe3Inited = false;
 static bool gRe3Running = false;
+static bool gRe3StartGameRequested = false;
+static bool gRe3GameInitialized = false;
+static bool gRe3PortalMode = false;
 int gRe3BackBufferWidth = 0;
 int gRe3BackBufferHeight = 0;
 static FILE *gRe3Log = nil;
@@ -2967,6 +2970,9 @@ Re3_Init(HWND hwnd, IDirect3DDevice9 *device, IDirect3D9 *d3d9, const char *game
 
 	startupDeactivate = TRUE;
 	gGameState = GS_INIT_ONCE;
+	gRe3StartGameRequested = false;
+	gRe3GameInitialized = false;
+	gRe3PortalMode = false;
 
 	gRe3Inited = true;
 	gRe3Running = true;
@@ -2979,6 +2985,35 @@ RE3_DLL_EXPORT void
 Re3_SetRenderTarget(IDirect3DSurface9 *color, IDirect3DSurface9 *depth)
 {
 	rw::d3d::setExternalD3D9RenderTarget(color, depth, color != nil);
+
+	// The embedded portal target may deliberately be smaller than GTA SA's
+	// backbuffer to keep the 32-bit process within its video/address-space
+	// budget. Keep re3's camera raster, viewport and 2D/HUD coordinate system
+	// in sync with the surface it actually renders into; otherwise a 1280x800
+	// target receives a cropped 1920x1200 frame (zoomed world, HUD off-screen).
+	if(color != nil){
+		D3DSURFACE_DESC desc;
+		if(SUCCEEDED(color->GetDesc(&desc)) && desc.Width > 0 && desc.Height > 0 &&
+		   (gRe3BackBufferWidth != (int32)desc.Width ||
+		    gRe3BackBufferHeight != (int32)desc.Height)){
+			gRe3BackBufferWidth = (int32)desc.Width;
+			gRe3BackBufferHeight = (int32)desc.Height;
+			RsGlobal.maximumWidth = desc.Width;
+			RsGlobal.maximumHeight = desc.Height;
+			RsGlobal.width = desc.Width;
+			RsGlobal.height = desc.Height;
+			if(Scene.camera != nil){
+				RwRect r;
+				r.x = 0;
+				r.y = 0;
+				r.w = desc.Width;
+				r.h = desc.Height;
+				RsEventHandler(rsCAMERASIZE, &r);
+			}
+			Re3Log("Portal: logical render size synchronized to %ux%u",
+				(unsigned)desc.Width, (unsigned)desc.Height);
+		}
+	}
 }
 
 static bool
@@ -3015,6 +3050,26 @@ Re3_KeyEvent(UINT virtualKey, RwBool down)
 	if(!down)
 		keyFlags |= ((LPARAM)1 << 30) | ((LPARAM)1 << 31);
 	Re3HandleKeyMessage(down ? WM_KEYDOWN : WM_KEYUP, virtualKey, keyFlags);
+}
+
+RE3_DLL_EXPORT void
+Re3_RequestStartGame(void)
+{
+	gRe3PortalMode = true;
+	gRe3StartGameRequested = true;
+	Re3Log("Portal: native new game requested");
+}
+
+bool
+Re3_IsPortalMode(void)
+{
+	return gRe3PortalMode;
+}
+
+RE3_DLL_EXPORT RwBool
+Re3_IsReady(void)
+{
+	return gRe3Inited && gRe3GameInitialized && gGameState == GS_PLAYING_GAME;
 }
 
 static RwBool
@@ -3083,6 +3138,11 @@ Re3_StepInternal(void)
 		} __except(Re3SehFilter("Re3_Step: exception in rsFRONTENDIDLE", GetExceptionInformation())) {
 			RsGlobal.quit = TRUE;
 		}
+		if(gRe3StartGameRequested){
+			gRe3StartGameRequested = false;
+			FrontEndMenuManager.m_bMenuActive = false;
+			FrontEndMenuManager.m_bWantToLoad = false;
+		}
 		if(frontendFrames <= 3 || frontendFrames % 120 == 0)
 			Re3Log("Re3 frontend: frame=%u active=%d screen=%d option=%d alpha=%d sprites=%d wantLoad=%d",
 				(unsigned)frontendFrames,
@@ -3114,6 +3174,7 @@ Re3_StepInternal(void)
 		FrontEndMenuManager.m_bWantToRestart = false;
 #endif
 		Re3Log("Re3_Step: InitialiseGame end");
+		gRe3GameInitialized = true;
 		gGameState = GS_PLAYING_GAME;
 		break;
 
@@ -3458,6 +3519,9 @@ Re3_Shutdown(void)
 	gRe3GameDir[0] = '\0';
 	gRe3Inited = false;
 	gRe3Running = false;
+	gRe3StartGameRequested = false;
+	gRe3GameInitialized = false;
+	gRe3PortalMode = false;
 	Re3Log("Re3_Shutdown: end");
 }
 

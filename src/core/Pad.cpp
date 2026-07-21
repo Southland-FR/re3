@@ -72,6 +72,21 @@ CMouseControllerState CPad::PCTempMouseControllerState;
 
 #if defined(RE3_IN_SA)
 static bool gRe3MouseInputEnabled = true;
+static bool gRe3PortalInputEnabled = true;
+
+void
+Re3_SetPortalInputEnabled(bool enabled)
+{
+	gRe3PortalInputEnabled = enabled;
+	for(int i = 0; i < MAX_PADS; i++)
+		Pads[i].Clear(false);
+	CPad::OldKeyState.Clear();
+	CPad::NewKeyState.Clear();
+	CPad::TempKeyState.Clear();
+	CPad::OldMouseControllerState.Clear();
+	CPad::NewMouseControllerState.Clear();
+	CPad::PCTempMouseControllerState.Clear();
+}
 
 extern "C" __declspec(dllexport) void
 Re3_SetMouseInputEnabled(RwBool enabled)
@@ -1123,6 +1138,16 @@ void CPad::AffectFromXinput(uint32 pad)
 
 void CPad::UpdatePads(void)
 {
+#if defined(RE3_IN_SA)
+	if(!gRe3PortalInputEnabled){
+		for(int i = 0; i < MAX_PADS; i++)
+			Pads[i].Clear(false);
+		OldKeyState.Clear();
+		NewKeyState.Clear();
+		TempKeyState.Clear();
+		return;
+	}
+#endif
 	bool bUpdate = true;
 
 	GetPad(0)->UpdateMouse();

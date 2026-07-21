@@ -34,7 +34,17 @@ CClock::Initialise(uint32 scale)
 void
 CClock::Update(void)
 {
-	if(CPad::GetPad(1)->GetRightShoulder1())
+	// San Andreas owns input while GTA III is hosted. Pad 1 can therefore carry
+	// stale state and trigger the original +8-minutes-per-frame debug shortcut.
+	// Preserve that shortcut for standalone re3 only.
+#ifdef RE3_IN_SA
+	const bool debugFastTimeInput = false;
+	const bool debugFastTime = false;
+#else
+	const bool debugFastTimeInput = CPad::GetPad(1)->GetRightShoulder1();
+	const bool debugFastTime = gbFastTime;
+#endif
+	if(debugFastTimeInput)
 	{
 		ms_nGameClockMinutes += 8;
 		ms_nLastClockTick = CTimer::GetTimeInMilliseconds();
@@ -48,12 +58,12 @@ CClock::Update(void)
 		}
 		
 	}
-	else if(CTimer::GetTimeInMilliseconds() - ms_nLastClockTick > ms_nMillisecondsPerGameMinute || gbFastTime)
+	else if(CTimer::GetTimeInMilliseconds() - ms_nLastClockTick > ms_nMillisecondsPerGameMinute || debugFastTime)
 	{
 		ms_nGameClockMinutes++;
 		ms_nLastClockTick += ms_nMillisecondsPerGameMinute;
 		
-		if ( gbFastTime )
+		if ( debugFastTime )
 			ms_nLastClockTick = CTimer::GetTimeInMilliseconds();
 		
 		if(ms_nGameClockMinutes >= 60)
