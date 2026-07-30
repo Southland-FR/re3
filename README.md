@@ -38,7 +38,7 @@ There are various settings at the very bottom of [config.h](https://github.com/G
 
 > :information_source: **If you choose OpenAL on Windows** You must read [Running OpenAL build on Windows](https://github.com/GTAmodding/re3/wiki/Running-OpenAL-build-on-Windows).
 
-> :information_source: **Did you notice librw?** re3 uses completely homebrew RenderWare-replacement rendering engine; [librw](https://github.com/aap/librw/). librw comes as submodule of re3, but you also can use LIBRW enviorenment variable to specify path to your own librw.
+> :information_source: **Did you notice librw?** re3 uses the homebrew RenderWare replacement [librw](https://github.com/aap/librw/). This repository vendors its own snapshot directly under `vendor/librw`; it is not the shared `/Documents/GitHub/librw` checkout and is not a Git submodule in this tree. Premake builds can also use the `LIBRW` environment variable to select an explicit compatible checkout.
 
 ## Contributing
 Please read the [Coding Style](https://github.com/GTAmodding/re3/blob/master/CODING_STYLE.md) Document
@@ -57,4 +57,3 @@ CBoat::ModifyHandlingValue - debug function from mobile
 CBoat::DisplayHandlingData - debug function from mobile
 TexturePools - only on PC (slight RW modification that we don't actually need)
 ```
-
